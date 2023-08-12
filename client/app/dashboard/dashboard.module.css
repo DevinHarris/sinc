@@ -1,0 +1,25 @@
+.dashboardContainer {
+    background-color: #F5F5F5;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    padding: 10em;
+    width: 100vw;
+}
+
+.dashboardHeader {
+    text-align: center;
+}
+
+.dashboardHeading {
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: .1rem;
+}
+
+.dashboardSubHeading {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: .5em auto;
+    /* letter-spacing: .1rem; */
+}

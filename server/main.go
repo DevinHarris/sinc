@@ -1,29 +1,24 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gorilla/mux"
 )
-
-func getHome(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, gin.H{"message": "Home route working!"})
-}
-
-func getWorkouts(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, gin.H{"message": "Workouts route"})
-}
-
-func getDiet(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, gin.H{"message": "Diets route"})
-}
 
 func main() {
 
-	router := gin.Default()
-	router.GET("/", getHome)
-	router.GET("/workouts", getWorkouts)
-	router.GET("/diet", getDiet)
+	var PORT string = ":3000"
+	r := mux.NewRouter()
 
-	router.Run("localhost:8080")
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello from new router! - This app is built with GO :)")
+	})
+
+	s := fmt.Sprintf("Running SINC using GO on PORT: %s", PORT)
+	fmt.Println(s)
+
+	http.ListenAndServe(PORT, r)
+
 }
