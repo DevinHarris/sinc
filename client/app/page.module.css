@@ -8,17 +8,53 @@
 
 
 .main {
-  text-align: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.mainSideBar {
+  background-color: #000;
+  height: 100%;
+  width: 10%;
+
+}
+
+.video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+.mainContent {
+  align-items: center;
+  display: flex;
+  padding: 10em;
+  width: 90%;
 }
 
 .landingLogo {
-  font-size: 2.5rem;
-  letter-spacing: .9rem;
+  font-size: 5.5rem;
+  font-weight: 400;
+  letter-spacing: .4rem;
 }
 
 .landingTagline {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
-  margin: 1rem auto;
+  margin: 3rem auto;
+}
+
+.dashboardLink {
+  background-color: #000;
+  border-radius: .5em;
+  color: #fff;
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 2em 10em;
 }
 

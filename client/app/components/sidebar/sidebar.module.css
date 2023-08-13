@@ -1,0 +1,49 @@
+.dashboardSidebar {
+    background-color: #fff;
+    display: flex;
+    flex-basis: 4%;
+    justify-content: center;
+    padding-top: 10em;
+}
+
+.dashboardSidebarAvatar {
+    border-radius: 50%;
+    border: 4px solid rgba(10, 189, 202, 0.5);
+    height: 8em;
+    width: 8em;
+    box-shadow: rgb(227 227 227) 0px 0px 8px 1px;
+}
+
+.dashboardSidebarAvatar img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.sideBarNav {
+    height: 20%;
+    margin-top: 2em;
+    text-align: center;
+}
+
+.sideBarNav nav {
+    height: 100%;
+}
+
+.sideBarNav nav ul {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.sidebarNavItems a {
+    color: #b5b6c3;
+    font-size: 3rem;
+}
+
+.sideNavLinkActive {
+    color: #444a58;
+    font-size: 3rem;
+}

@@ -1,9 +1,10 @@
-.dashboardContainer {
-    background-color: #F5F5F5;
+.dashboardPage {
     display: flex;
+}
+
+.dashboardMainContainer {
+    background-color: #f9f9f9;
     height: 100vh;
-    justify-content: center;
-    padding: 10em;
     width: 100vw;
 }
 
@@ -12,14 +13,34 @@
 }
 
 .dashboardHeading {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 400;
     letter-spacing: .1rem;
 }
 
 .dashboardSubHeading {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 400;
     margin: .5em auto;
     /* letter-spacing: .1rem; */
+}
+
+
+.mainContent {
+    align-items: center;
+    display: flex;
+    margin-top: 10em;
+    justify-content: center;
+    flex-basis: 97%;
+}
+
+.mainContentHeading {
+    text-align: center;
+}
+
+.sidebarLogo {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    width: 7em;
 }
