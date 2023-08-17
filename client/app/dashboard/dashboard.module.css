@@ -1,14 +1,25 @@
 .dashboardPage {
-    display: flex;
-}
-
-.dashboardMainContainer {
-    background-color: #f9f9f9;
+    background-color: #f4f7fe;
     height: 100vh;
     width: 100vw;
 }
 
+.dashboardMainGridContainer {
+    display: grid;
+
+    grid-template-areas: 
+        'sidebar header header'
+        'sidebar main main'
+        'sidebar footer footer';
+    
+    grid-template-rows: 15rem 1fr 10rem;
+    grid-template-columns: 30rem auto auto;
+    height: 100%;
+    width: 100%;
+}
+
 .dashboardHeader {
+    grid-area: header;
     text-align: center;
 }
 
@@ -27,20 +38,24 @@
 
 
 .mainContent {
-    align-items: center;
-    display: flex;
-    margin-top: 10em;
-    justify-content: center;
-    flex-basis: 97%;
+    grid-area: main;
 }
 
-.mainContentHeading {
-    text-align: center;
-}
-
+/* 
 .sidebarLogo {
     position: absolute;
-    top: 2em;
-    left: 2em;
+    top: 5em;
+    left: 5em;
     width: 7em;
-}
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+
+} */
+/* 
+.dashboardSpaces {
+    align-items: flex-start;
+    margin-top: 3em;
+    width: 95vw;
+    height: 100vh;
+    display: flex;
+    padding: 3em;
+} */

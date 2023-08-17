@@ -1,0 +1,36 @@
+.dashboardFooter {
+    grid-area: footer;
+}
+
+.footerNav {
+    background-color: #fff;
+    box-shadow: rgba(112, 144, 176, 0.18) 14px 17px 40px -23px;
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    border-radius: 5rem;
+    height: 60%;
+}
+
+.footerNav nav {
+    height: 100%;
+}
+
+.footerNav nav ul {
+    display: flex;
+    flex-direction: row;
+    height: inherit;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+.footerNavItems a {
+    color: #b5b6c3;
+    font-size: 3rem;
+}
+
+.footerNavLinkActive {
+    color: #444a58;
+    font-size: 3rem;
+}

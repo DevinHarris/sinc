@@ -1,6 +1,11 @@
 .navbarContainer {
-    height: 7em;
-    width: 100%;
+
+    border-radius: 20em;
+    box-shadow: rgba(112, 144, 176, 0.18) 14px 17px 40px -23px;
+    display: flex;
+    height: 8em;
+    margin: 2em auto;
+    width: 50%;
 }
 
 .navbar {
@@ -8,14 +13,36 @@
     background-color: #fff;
     display: flex;
     height: 100%;
-    justify-content: center;
     padding: 2em 5em;
+    width: 100%;
+}
+
+.navbarAvatar {
+    border-radius: 50%;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.1));
+    height: 6em;
+    margin-right: 10em;
+    width: 6em;
+}
+
+.navbarAvatar img {
+    height: 100%;
+    object-fit: cover;
     width: 100%;
 }
 
 .searchBarContainer {
     height: 4em;
-    width: 60%;
+    position: relative;
+    width: 100%;
+}
+
+.searchIcon {
+    top: 10px;
+    right: 30px;
+    color: #000;
+    font-size: 2em;
+    position: absolute;
 }
 
 .searchBar {
