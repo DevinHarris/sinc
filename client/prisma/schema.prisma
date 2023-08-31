@@ -1,0 +1,28 @@
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id          Int @id @default(autoincrement())
+    username    String @unique
+    name        String
+    workouts    Workout[] @relation(fields: [workoutId])
+    
+}
+
+model Workout {
+    id          Int @id @default(autoincrement())
+    name        String
+    muscles     String[]
+    video       String
+}
+
+model Access {
+    id          Int @id @default(autoincrement())
+    accessToken String @unique
+}

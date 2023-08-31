@@ -13,7 +13,7 @@
         'sidebar footer footer';
     
     grid-template-rows: 15rem 1fr 10rem;
-    grid-template-columns: 30rem auto auto;
+    grid-template-columns: 45rem auto auto;
     height: 100%;
     width: 100%;
 }

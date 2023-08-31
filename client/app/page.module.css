@@ -1,62 +1,74 @@
-.container {
-  background-color: #f4f7fe;
-  align-items: center;
+.landingContainer {
+  background-image: linear-gradient(to bottom,#07050a 53%, #020306 85%, #07050c);
+  color: #fff;
   display: flex;
-  height: 100vh;
+  height: 100svh;
   justify-content: center;
-  width: 100vw;
+  padding: 10rem;
+  position: relative;
+}
+
+.landingMain {
+  padding: 5rem;
+  text-align: center;
 }
 
 
-
-.main {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
-}
-
-.mainSideBar {
-  background-color: #000;
-  height: 100%;
-  width: 10%;
-
-}
-
-.video {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-}
-
-.mainContent {
-  align-items: center;
-  display: flex;
-  padding: 10em;
-  width: 90%;
+.landingMain h1 {
+  font-size: 7rem;
+  font-weight: 400;
+  margin-bottom: .2em;
 }
 
 .landingLogo {
-  font-size: 5.5rem;
-  font-weight: 400;
-  letter-spacing: .4rem;
-}
-
-.landingTagline {
-  font-size: 2rem;
-  font-weight: 400;
-  margin: 3rem auto;
-}
-
-.dashboardLink {
-  background-color: #000;
-  border-radius: .5em;
-  color: #fff;
-  display: inline-block;
-  font-size: 1.3rem;
   font-weight: 500;
-  padding: 2em 10em;
+}
+
+.landingMain p {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.activityHighlight {
+  color: #ff2f66;
+}
+
+
+.ctaContainer {
+  margin-top: 5rem;
+}
+
+.landingFormField {
+  border-radius: 0.4em;
+  padding: 1.3em 3em;
+  border: 1px solid #5c5757;
+  background-color: #0a0b0e;
+  color: #fff;
+  outline: none;
+  margin-right: .5em;
+  text-align: center;
+}
+
+.landingEnterBtn {
+  background-color: #ff2f66;
+  border: 1px solid #ff2f66;
+  border-radius: 0.4em;
+  color: #fff;
+  cursor: pointer;
+  padding: 1.3em 3em;
+}
+
+.landingVideoContainer {
+  left: 50%;
+  bottom: 0em;
+  position: absolute;
+  width: 42svw;
+  transform: translateX(-50%);
+}
+
+.landingVideo {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 

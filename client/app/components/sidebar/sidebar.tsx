@@ -13,8 +13,8 @@ export default function Sidebar({ user }: {
                 </div>
                 <div className={styles.sidebarMainContent}>
                     <div className={styles.sideBarHeading}>
-                        <h1>Hello Devin</h1>
-                        <p>Welcome to your Fitness Space.</p>
+                        <h1>Hello Devin.</h1>
+                        <p>Here's a summary of your day</p>
                     </div>
                 </div>
             </div>

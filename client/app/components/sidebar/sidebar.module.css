@@ -13,9 +13,9 @@
 
 .dashboardSidebarAvatar {
     border-radius: 5rem;
-    height: 15em;
+    height: 17em;
     /* filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.1)); */
-    width: 15em;
+    width: 17em;
 }
 
 .dashboardSidebarAvatar img {
@@ -25,7 +25,7 @@
 }
 
 .sideBarHeading {
-    margin-top: 3rem;
+    margin-top: 5rem;
     text-align: center;
 }
 

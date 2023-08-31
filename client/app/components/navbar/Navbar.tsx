@@ -4,7 +4,7 @@ import User from '@/types/user'
 
 export default function Navbar({ user, children }: {
     user: User,
-    children: React.ReactNode
+    children?: React.ReactNode
 }) {
     return (
         <div className={styles.navbarContainer}>
