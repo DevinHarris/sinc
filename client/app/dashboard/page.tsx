@@ -36,7 +36,7 @@ export default function Page() {
 
             <div className={styles.dashboardMainGridContainer}>
                 <header className={styles.dashboardHeader}>
-                    <Navbar user={user} />
+                    {/* <Navbar user={user} /> */}
                 </header>
                 <Sidebar user={user} />
                 <main className={styles.mainContent}>

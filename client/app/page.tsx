@@ -2,7 +2,10 @@
 
 import Link from 'next/link'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import styles from './page.module.css'
+import { motion, AnimatePresence } from 'framer-motion'
+import {  FaWater } from 'react-icons/fa'
+import { PiBowlFood } from 'react-icons/pi'
+import Space from '@/components/Space/Space'
 
 interface Access {
   accessCode: string
@@ -16,27 +19,58 @@ export default function Page() {
 
 
   return (
-    <div className={styles.container}>
-       <div className={styles.landingContainer}>
-          <div className={styles.landingMain}>
-            <h1>Introducing <span className={styles.landingLogo}>SINC</span></h1>
-            <p>Your <span className={styles.activityHighlight}>fitness life</span> all in one place.</p>
-            <div className={styles.landingBigLogo}>
-              <div className={styles.landingBigLogoCenter}></div>
+    <div className="w-screen h-screen grid grid-rows-4 grid-cols-4 text-center z-10 px-20">
+         <div className="relative min-w-full min-h-full max-w-none-z-10">
+
+            <video src="/img/landingbg-11.mp4"
+              className="min-h-full min-w-full object-cover object-bottom fixed top-0 left-0 "
+              autoPlay
+              muted
+              loop
+              ></video>
+         </div>
+          <div className="header-intro self-center col-start-1 col-end-3 row-start-1 row-end-5 text-black my-36 py-10 px-24  flex z-10">
+            <div className="intro my-10 w-full text-left">
+              <h2 className="text-5xl font-bold tracking-tight text-black md:text-[90px] md:leading-[86px]">Control your <span className="">fitness life.</span><br></br> All in one place.</h2>
+              <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* <input {...register('accessCode')} type='text' className="" placeholder='Enter Early Access Code' /> */}
+                    <motion.button
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1 }}
+                     className="my-10 bg-indigo-400/50 text-white font-medium px-5 py-5 rounded">Get Started</motion.button>
+                </form> 
+             </div>
             </div>
-            <div className={styles.ctaContainer}>
-                <div className={styles.landingForm}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register('accessCode')} type='text' className={styles.landingFormField} placeholder='Enter Early Access Code' />
-                        <button className={styles.landingEnterBtn}>Get Started</button>
-                    </form>    
-                </div>
-            </div>
-            <div className={styles.landingVideoContainer}>
-              <video autoPlay muted loop className={styles.landingVideo} src='/img/landingbg-2.mp4'></video>
-            </div>
+            
           </div>
-       </div>
+
+          <div className="col-start-4 col-end-4 row-start-2 row-end-2 justify-center self-end z-20">
+              
+              <h1 className="text-5xl font-medium tracking-tight text-black md:text-[55px] md:leading-[86px]">You've never tracked like this</h1>
+              <p className="font-normal py-5 text-xl tracking-wider">Easily filter macros and track things like workouts, fats, calories, carbs, water intake and more! Just add them to your <span className="font-semibold">Space.</span></p>
+            
+            </div>
+            <div className="col-start-4 col-end-4 row-start-3 row-end-3 self-center">
+                <div className="flex justify-between">
+                <Space title="Water" bgColor='bg-blue-950/50' color='text-white' percentage={78} percentLabel="Cups">
+                </Space>
+
+                <Space title="Calories" bgColor='bg-sky-800/60' color='text-white' percentage={54} percentLabel='1502 / 3000'>
+                </Space>
+
+                <Space title="Fats" bgColor='bg-blue-950/60' color='text-white' percentage={43} percentLabel='Low'>
+                </Space>
+
+                <Space title="Carbs" bgColor='bg-cyan-950/60' color='text-white' percentage={50} percentLabel='Low'>
+                </Space>
+                </div>
+
+         </div>
+          
+          
+            
     </div>
   )
 }

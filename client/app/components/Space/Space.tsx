@@ -1,64 +1,72 @@
 "use client"
 
-import { useState, useEffect } from 'react'
-import { PiBarbellLight, PiDrop, PiBowlFood } from 'react-icons/pi'
-import Link from 'next/link'
-import Space from '@/types/space';
-import styles from './space.module.css'
+import { useState, useEffect, ReactNode } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
+import { FaWater } from 'react-icons/fa'
+
+import 'react-circular-progressbar/dist/styles.css'
 
 
-export default function Space({ spaceClassName, date, backgroundColor, buttonText, buttonColor, children, spaceType, dropShadowColor }: Space) {
+interface Space {
+    title: string,
+    bgColor: string,
+    color: string 
+    children?: ReactNode,
+    percentage: number,
+    percentLabel: string
+}
 
-    const [ spaceSize, setSpaceSize ] = useState('')
+export default function Space({ children, title, bgColor, color, percentage, percentLabel}: Space) {
 
-    useEffect(() => {
-       if (spaceType == "single") setSpaceSize("15%")
-       if (spaceType == "current") setSpaceSize("30%")
-       if (spaceType == "half") setSpaceSize("50%")
-       if (spaceType == "full") setSpaceSize("95%")
-
-    })
-
-   
+    const [ space, setSpace ] = useState<Space>({ title, color, bgColor, percentage, percentLabel });
+  
 
     return (
-        <div className={`${styles.spaceContainer} ${spaceClassName}`} style={{ backgroundColor: backgroundColor, filter: `drop-shadow(0px 0px 10px ${dropShadowColor})`, width: spaceSize }}>
-            
-            <div className={styles.spaceMainContent}>
+        <motion.div
+        initial={{ opacity: 0, translateY: "20%" }}
+        animate={{ opacity: 1, translateY: "0" }}
+        transition={{ duration: 0.6 }}
+        whileHover={{ y: "-20%" }}
+        className={`space w-48 h-48 rounded-3xl shadow-lg relative text-center p-7 backdrop-blur-lg ${space.bgColor} ${space.color}`}
+        >
+            <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+             className="text-white text-medium uppercase font-medium tracking-wider">{ space.title }</motion.span>
+            <motion.div className="my-5">
+                
+                <CircularProgressbar 
+                    value={space.percentage}
+                    strokeWidth={5}
+                    text={space.percentLabel}
+                    styles={{
+                        root: {
+                            width: "60%",
+                            margin: "0 auto"
+                        },
+
+                        path: {
+                            stroke: `rgba(0, 160, 255, ${space.percentage / 100})`,
+                            strokeLinecap: 'butt',
+                            transition: 'stroke-dashoffset 0.5s ease 0s',
+                            transformOrigin: 'center center'
+                        },
+
+                        trail: {
+                            stroke: '#fff',
+                            strokeLinecap: 'butt'
+                        },
+
+                        text: {
+                            fill: "#fff",
+                            fontSize: "14px"
+                        }
+                    }} 
+                />
                 { children }
-
-                { date ? <div className={styles.spaceHeading}> {
-                    (
-                        <>
-                            <h1>Today</h1>
-                            <h2>It's Wednesday { date }</h2>
-                        </>
-                    )
-                } </div> : null }
-
-                {
-                    spaceType == 'current' ? (
-                        <div className={styles.currentMeta}>
-                            <div className={styles.currentItem}>
-                                <PiBarbellLight />
-                                <span className={styles.workoutType}>Push</span>
-                            </div>
-
-                            <div className={styles.currentItem}>
-                                <PiDrop />
-                                <span className={styles.workoutType}>1.2 gallons drank</span>
-                            </div>
-                            <div className={styles.currentItem}>
-                                <PiBowlFood />
-                                <span className={styles.workoutType}>2/4 meals eaten</span>
-                            </div>
-                        </div>
-                    ) : null
-                }
-            </div>
-            <Link href="today" className={styles.spaceBtn} style={{ backgroundColor: buttonColor }}>
-                { buttonText }
-            </Link>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }
