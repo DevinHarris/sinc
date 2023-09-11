@@ -14,12 +14,13 @@ interface Space {
     color: string 
     children?: ReactNode,
     percentage: number,
-    percentLabel: string
+    percentLabel: string,
+    width: string
 }
 
-export default function Space({ children, title, bgColor, color, percentage, percentLabel}: Space) {
+export default function Space({ children, title, bgColor, color, percentage, percentLabel, width}: Space) {
 
-    const [ space, setSpace ] = useState<Space>({ title, color, bgColor, percentage, percentLabel });
+    const [ space, setSpace ] = useState<Space>({ title, color, bgColor, percentage, percentLabel, width });
   
 
     return (
@@ -28,7 +29,7 @@ export default function Space({ children, title, bgColor, color, percentage, per
         animate={{ opacity: 1, translateY: "0" }}
         transition={{ duration: 0.6 }}
         whileHover={{ y: "-20%" }}
-        className={`space w-48 h-48 rounded-3xl shadow-lg relative text-center p-7 backdrop-blur-lg ${space.bgColor} ${space.color}`}
+        className={`space  h-auto rounded-3xl shadow-lg relative text-center p-7 backdrop-blur-lg ${space.bgColor} ${space.color} ${space.width}`}
         >
             <motion.span
             initial={{ opacity: 0 }}
@@ -39,7 +40,7 @@ export default function Space({ children, title, bgColor, color, percentage, per
                 
                 <CircularProgressbar 
                     value={space.percentage}
-                    strokeWidth={5}
+                    strokeWidth={6}
                     text={space.percentLabel}
                     styles={{
                         root: {
