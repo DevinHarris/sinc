@@ -15,7 +15,7 @@ interface Space {
     children?: ReactNode,
     percentage: number,
     percentLabel: string,
-    width: string
+    width?: string
 }
 
 export default function Space({ children, title, bgColor, color, percentage, percentLabel, width}: Space) {
