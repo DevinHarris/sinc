@@ -1,0 +1,15 @@
+.btn {
+    border-radius: 4px;
+    background-color: hsl(0, 0%, 0%, 1);
+    color: #fff;
+    display: inline-block;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+}
+
+.inverted {
+    @extend .btn;
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid hsl(0, 0%, 80%);
+    color: hsl(0, 0%, 0%, 1);
+}
