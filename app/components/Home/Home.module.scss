@@ -1,0 +1,48 @@
+.home {
+    .homeCoverContent {
+        display: flex;
+        flex-direction: column;
+
+        .homeCoverHeaderText {
+            font-size: var(--font-really-huge);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        width: 100%;
+
+        .homeCoverContentText {
+            font-size: var( --font-medium-2);
+            min-width: 100%;
+            max-width: 100%;
+        }
+
+        .homeCoverIcon {
+            cursor: pointer;
+            margin-block-start: 2rem;
+            -webkit-transition: all 0.5s ease;
+
+            &:hover {
+                -webkit-transform: translateY(5px);
+            }
+        }
+    }
+
+    .homeSection {
+        min-width: 100%;
+    }
+
+    .homeHowItWorks {
+        display: flex;
+        flex-direction: column;
+        padding-block: var(--space);
+        padding-inline: var(--inline-space);
+        width: 100%;
+
+        .sectionHeading {
+            h2 {
+                font-size: var(--font-huge);
+                font-weight: 600;
+            }
+        }
+    }
+}

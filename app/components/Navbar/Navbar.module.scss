@@ -1,0 +1,52 @@
+.navbar {
+    align-items: center;
+    background: hsl(100, 100%, 0%);
+    color: hsl(0, 0%, 100%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-block: var(--measure-ratio);
+    justify-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000000000;
+
+    .navbarLeft, .navbarRight {
+        display: flex;
+
+        .navbarLink {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-inline: 1.5rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .centerLogo {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: 0.15rem;
+        justify-content: center;
+
+        .centerLogoText {
+            margin-block-start: 0.5rem;
+            font-size: 1rem;
+        }
+    }
+
+    li {
+        -webkit-transition: all 0.5s ease;
+
+        &:hover {
+            -webkit-transform: translateY(-3px);
+        }
+    }
+
+
+
+}
