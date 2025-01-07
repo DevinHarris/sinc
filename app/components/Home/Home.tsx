@@ -31,7 +31,7 @@ export default function Home() {
                     <div className={styles.homeGridLeftSection}>
                         <div className={styles.homeGridContent}>
                             <div className={styles.homeGridContentDescriptions}>
-                                <p className={styles.homeDescription}>SINC is your all-in-one gym companion, designed to help you achieve your fitness goals with ease. Whether you're building muscle, cutting fat, or planning the perfect workout routine, SINC offers personalized tools and guidance tailored to your unique needs.</p>
+                                <p className={styles.homeDescription}><strong>SINC</strong> is your all-in-one gym companion, designed to help you achieve your fitness goals with ease. Whether you're building muscle, cutting fat, or planning the perfect workout routine, SINC offers personalized tools and guidance tailored to your unique needs.</p>
                                 <p className={styles.homeDescription}>From customized meal plans and detailed progress tracking to expert tips and community support, SINC empowers you to stay consistent and reach new heights.</p>
                                 <p className={styles.homeDescription}>Start your fitness transformation today—download SINC and take the first step towards a stronger, healthier you.</p>
                             </div>
@@ -45,8 +45,11 @@ export default function Home() {
                 <div className={styles.homeGridRight}>
                     <div className={styles.homeQuizContainer}>
                         <div className={styles.homeQuizHeading}>
-                            <h3>Welcome to SINC.</h3>
+                            <h3>Get started in seconds.</h3>
                             <p>Complete the quiz below to get your profile started.</p>
+                        </div>
+                        <div className={styles.quizQuestions}>
+                            <h4>What's your name?</h4>
                         </div>
                     </div>
                 </div>

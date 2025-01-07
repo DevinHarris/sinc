@@ -12,13 +12,20 @@ import {
 } from "@/src/app/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 const notifications = [
+  {
+    title: "LA Fitness is getting busier. Please plan accordingly.",
+    description: "3s ago",
+  },
+
   {
     title: "Your Push workout has been comfirmed.",
     description: "1 min ago",
   },
   {
-    title: "The gym is currently empty. Now is the best time to go.",
+    title: "LA Fitness is currently empty. Now is the best time to go.",
     description: "12 mins ago",
   },
   {
@@ -33,8 +40,12 @@ export function CardDemo({ className, ...props }: CardProps) {
   return (
     <Card className={cn("w-[380px]", className)} {...props}>
       <CardHeader>
+      <Avatar style={{ width: "3rem", height: "3rem", marginBlock: "1rem"}}>
+      <AvatarImage style={{ borderRadius: "100%" }} src="https://yt3.ggpht.com/81x8S82uQtmWC9sRvXI_33Nm_nhPpio1JXBp2bWi7Kyg9apsdIGaqKo6XPdiBZO-l3Jh2XS5jw=s108-c-k-c0x00ffffff-no-rj" alt="@shadcn" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
         <CardTitle>Notifications</CardTitle>
-        <CardDescription>You have 3 unread messages.</CardDescription>
+        <CardDescription>{`You have ${notifications.length} unread messages.`}</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className=" flex items-center space-x-4 rounded-md border p-4">
