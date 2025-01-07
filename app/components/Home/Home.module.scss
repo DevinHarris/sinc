@@ -1,47 +1,86 @@
 .home {
-    .homeCoverContent {
-        display: flex;
-        flex-direction: column;
+    .homeGrid {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 50rem 1fr;
+        line-height: 1.6;
 
-        .homeCoverHeaderText {
-            font-size: var(--font-really-huge);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        width: 100%;
+        .homeGridLeft {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-block: 3rem;
+            padding-inline: 2rem;
+            border-right: 1px solid var(--border-color);
 
-        .homeCoverContentText {
-            font-size: var( --font-medium-2);
-            min-width: 100%;
-            max-width: 100%;
-        }
+            .homeNavLogo {
+                font-size: 3rem;
+                font-weight: 700;
+            }
 
-        .homeCoverIcon {
-            cursor: pointer;
-            margin-block-start: 2rem;
-            -webkit-transition: all 0.5s ease;
+            .homeNavTagline {
+                font-weight: 700;
+                font-size: 1rem;
 
-            &:hover {
-                -webkit-transform: translateY(5px);
+            }
+
+            .homeGridLeftSection {
+                margin-block: 1rem;
+
+                .homeGridLeftTitle {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-block-end: 1rem;
+                }
+
+                .welcomeBackMsg {
+                    font-weight: 600;
+                    margin-block-end: 1rem;
+                }
+            }
+
+            .homeGridContentDescriptions {
+                .homeDescription {
+                    color: hsl(0deg, 3%, 44%);
+                    margin-block: 1rem;
+                }
+                
+            }
+
+            .homeGetStarted {
+                h2 {
+                    color: hsl(0, 3%, 44%);
+                    font-weight: 700;
+                    margin-block-end: 1.5rem;
+                }
+                .homeGetStartedButton {
+                    background-color: hsl(0deg, 0%, 0%);
+                    color: hsl(0deg,  100%, 100%);
+                    padding-block: 2rem;
+                    -webkit-transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        transform: translateX(3px);
+                    }
+        
+                }
             }
         }
-    }
 
-    .homeSection {
-        min-width: 100%;
-    }
+        .homeGridRight {
+            display: flex;
+            justify-content: center;
 
-    .homeHowItWorks {
-        display: flex;
-        flex-direction: column;
-        padding-block: var(--space);
-        padding-inline: var(--inline-space);
-        width: 100%;
+            .homeQuizContainer {
+                padding-block-start: 3rem;
 
-        .sectionHeading {
-            h2 {
-                font-size: var(--font-huge);
-                font-weight: 600;
+               .homeQuizHeading {
+                h3 {
+                    font-size: 3rem;
+                    font-weight: 700;
+                }
+                text-align: center;
+               }
             }
         }
     }

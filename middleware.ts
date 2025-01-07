@@ -10,3 +10,5 @@ export function middleware(request: NextRequest, repsonse: NextResponse) {
 export const config = {
     matcher: "/programs/day"
 }
+
+export { auth as authMiddleware } from '@/auth';

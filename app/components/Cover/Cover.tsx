@@ -9,6 +9,7 @@ export default function Cover({
     backgroundImage,
     backgroundVideo,
     backgroundColor,
+    borderBottom,
     textColor
 }: CoverProps) {
 
@@ -16,7 +17,8 @@ export default function Cover({
         display: displayType === 'grid' ? 'grid' : 'flex',
         backgroundColor,
         height,
-        color: textColor
+        color: textColor,
+        borderBottom: borderBottom
     }
 
     return (
