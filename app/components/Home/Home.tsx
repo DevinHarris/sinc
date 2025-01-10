@@ -1,60 +1,104 @@
 "use client"
+import { useState, useEffect } from "react"
+import { useForm, SubmitHandler } from 'react-hook-form'
+import Link from "next/link"
+import { Input } from '@/src/app/components/ui/input'
+import { Label } from '@/src/app/components/ui/label'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 
-import * as React from "react"
-import { Button } from '@/src/app/components/ui/button'
-import { ArrowUpRight } from 'lucide-react'
-
- 
 import styles from './Home.module.scss';
-import { CardDemo } from "../Card";
 
+interface IFormInput {
+    code: string
+}
 
-
+interface codeResponseProps {
+    message?: string,
+    warning?: string,
+    codeExists: boolean,
+    data?: [{
+        activated: null,
+        active: boolean,
+        code: string,
+        userId: string
+    }]
+}
 
 export default function Home() {
 
-      
+    const [code, setCode] = useState("");
+    const [codeResponse, setCodeReponse] = useState<codeResponseProps>();
+    const { register, handleSubmit } = useForm<IFormInput>();
+
+    const onSubmit: SubmitHandler<IFormInput> = data => setCode(data.code);
+
+    useEffect(() => {
+
+        const checkCode = async () => {
+            const codeReq = await fetch(`/api/code/${code}`);
+            const res = await codeReq.json();
+            
+            console.log(res);
+            setCodeReponse(res);
+        }
+
+
+       
+
+        checkCode();
+
+    }, [code])
+
+    useEffect(() => {
+
+        const activateCode = async () => {
+            const codeReq = await fetch("/api/code/activate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ code })
+            })
+
+            const res = await codeReq.json()
+            console.log(res);
+        }
+
+        activateCode();
+    }, [code])
+    
     return (
         <div className={styles.home}>
-            <div className={styles.homeGrid}>
-                <div className={styles.homeGridLeft}>
-                    <div className={styles.homeGridLeftHeading}>
-                        <nav className={styles.homeNav}>
-                            <h1 className={styles.homeNavLogo}>SINC.</h1>
-                            <span className={styles.homeNavTagline}>Master your physique.</span>
-                        </nav>
+            <div className={styles.homeContent}>
+                <h1>SINC will be publicly available soon.</h1>
+                <p>Invited to the Early Beta?</p>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className={styles.codeInputContainer}>
+                        <Input className={styles.codeInput} style={{ paddingBlock: '2rem', backgroundColor: `${codeResponse?.codeExists ? "hsl(168.42deg 51.78% 59.48%)" : "hsl(0deg 2.31% 8.68%);"} `} }  id="access-code" {...register("code")}  />
+                        {
+                            codeResponse?.codeExists && (
+                                <CheckCircle className={styles.checkIcon} />
+                            )
+                        }
+                        <Label htmlFor="access-code">
+                            {
+                                codeResponse ? 
+                                <div className={styles.codeSuccessWrapper}>
+                                    
+                                  {
+                                    <div dangerouslySetInnerHTML={{__html: codeResponse.message!}} />
+                                  }
+                                </div> : <>Enter your code here.</>
+                            }
+                        </Label>
                     </div>
-                    <div className={styles.homeGridLeftSection}>
-                        <h2 className={styles.welcomeBackMsg}>Welcome back, <strong>Devin</strong>. Here's your day at a glance.</h2>
-                        <CardDemo />
-                    </div>
-                    <div className={styles.homeGridLeftSection}>
-                        <div className={styles.homeGridContent}>
-                            <div className={styles.homeGridContentDescriptions}>
-                                <p className={styles.homeDescription}><strong>SINC</strong> is your all-in-one gym companion, designed to help you achieve your fitness goals with ease. Whether you're building muscle, cutting fat, or planning the perfect workout routine, SINC offers personalized tools and guidance tailored to your unique needs.</p>
-                                <p className={styles.homeDescription}>From customized meal plans and detailed progress tracking to expert tips and community support, SINC empowers you to stay consistent and reach new heights.</p>
-                                <p className={styles.homeDescription}>Start your fitness transformation today—download SINC and take the first step towards a stronger, healthier you.</p>
-                            </div>
-                            <div className={styles.homeGetStarted}>
-                                <h2>Start by completing the quiz over on the right.</h2>
-                                <Button className={styles.homeGetStartedButton}>Complete the quiz <ArrowUpRight /></Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.homeGridRight}>
-                    <div className={styles.homeQuizContainer}>
-                        <div className={styles.homeQuizHeading}>
-                            <h3>Get started in seconds.</h3>
-                            <p>Complete the quiz below to get your profile started.</p>
-                        </div>
-                        <div className={styles.quizQuestions}>
-                            <h4>What's your name?</h4>
-                        </div>
-                    </div>
-                </div>
+                   {
+                    codeResponse?.codeExists && (
+                        <Link href="/api/auth/signin" className={styles.continueBtn}>Continue <ArrowRight /></Link>
+                    )
+                   }
+                </form>
             </div>
-            
         </div>
     )
 }

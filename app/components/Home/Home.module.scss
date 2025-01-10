@@ -1,98 +1,53 @@
 .home {
-    .homeGrid {
-        display: grid;
-        height: 100vh;
-        grid-template-columns: 50rem 1fr;
-        line-height: 1.6;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
 
-        .homeGridLeft {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding-block: 3rem;
-            padding-inline: 2rem;
-            border-right: 1px solid var(--border-color);
+    .homeContent {
 
-            .homeNavLogo {
-                font-size: 3rem;
-                font-weight: 700;
-            }
-
-            .homeNavTagline {
-                font-weight: 700;
-                font-size: 1rem;
-
-            }
-
-            .homeGridLeftSection {
-                margin-block: 1rem;
-
-                .homeGridLeftTitle {
-                    font-size: 2rem;
-                    font-weight: 700;
-                    margin-block-end: 1rem;
-                }
-
-                .welcomeBackMsg {
-                    font-weight: 600;
-                    margin-block-end: 1rem;
-                }
-            }
-
-            .homeGridContentDescriptions {
-                .homeDescription {
-                    color: hsl(0deg, 3%, 44%);
-                    margin-block: 1rem;
-                }
-                
-            }
-
-            .homeGetStarted {
-                h2 {
-                    color: hsl(0, 3%, 44%);
-                    font-weight: 700;
-                    margin-block-end: 1.5rem;
-                }
-                .homeGetStartedButton {
-                    background-color: hsl(0deg, 0%, 0%);
-                    color: hsl(0deg,  100%, 100%);
-                    font-weight: 700;
-                    padding-block: 2rem;
-                    -webkit-transition: all 0.3s ease-in-out;
-
-                    &:hover {
-                        transform: translateX(3px);
-                    }
-        
-                }
-            }
-        }
-
-        .homeGridRight {
+        h1 {
             
+            font-weight: 700;
+            font-size: 2rem;
+        }
+        text-align: center;
+
+        .continueBtn {
             display: flex;
-            padding-inline: 2rem;
-            // justify-content: center;
-
-            .homeQuizContainer {
-                
-                padding-block-start: 3rem;
-
-               .homeQuizHeading {
-                h3 {
-                    font-size: 2.5rem;
-                    font-weight: 700;
-                }
-               }
-
-               .quizQuestions {
-                    margin-block: 1.4rem;
-                    h4 {
-                        font-size: 1.5rem;
-                        font-weight: 600;
-                    }
-               }
-            }
+                justify-content: center;
+                align-items: center;
+                padding-block: 1rem;
+                margin-block-start: 0.5rem;
+                background-color: hsl(0deg 0.85% 8.8%);
+                transition: all ease-in-out;
         }
     }
+    .codeInputContainer {
+        position: relative;
+        margin-block: 1rem;
+        .checkIcon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .codeInput {
+            transition: all 0.5s ease-in-out;
+        }
+    }
+
+    .codeSuccessWrapper {
+        margin-block: 1rem;
+        font-weight: 500;
+        line-height: 1.4;
+
+        h2 {
+            margin-block-start: 1rem;
+        }
+    }
+    }
+    
+
+ .homeContent > * + * {
+    margin-block: 1rem;
 }

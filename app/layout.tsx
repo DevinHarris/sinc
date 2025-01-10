@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google'
 import "./globals.scss";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 
 const inter = Inter({
@@ -17,12 +18,17 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode,
 }>) {
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-          {children}
+          <div className="app-container">
+            <Sidebar />
+            <div className="app-main">
+              {children}
+            </div>
+          </div>
       </body>
     </html>
   );

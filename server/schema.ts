@@ -1,7 +1,6 @@
-import { boolean, timestamp, pgTable, text, primaryKey, integer, foreignKey } from "drizzle-orm/pg-core"
-import postgres from 'postgres'
-import { drizzle } from "drizzle-orm/postgres-js"
-import type { AdapterAccount } from "next-auth/adapters"
+import { boolean, timestamp, pgTable, text, primaryKey, integer } from "drizzle-orm/pg-core"
+
+import type { AdapterAccountType } from "next-auth/adapters"
 
 export const users = pgTable("user", {
     id: text("id").primaryKey().notNull(),
@@ -11,26 +10,33 @@ export const users = pgTable("user", {
     avatar: text("image"),
 })
 
-export const accounts = pgTable("account", {
-    userId: text("userId").notNull()
-    .references(() => users.id,  { onDelete: "cascade" }),
-    type: text("type").$type<AdapterAccount>().notNull(),
-    provider: text("provider").notNull(),
-    providerAccountId: text("providerAccountId").notNull(),
-    refresh_token: text("refresh_token"),
-    access_token: text("access_token"),
-    expires_at: integer("expires_at"),
-    token_type: text("token_type"),
-    scope: text("scope"),
-    id_token: text("id_token"),
-    session_state: text("session_state"),
-},
-    (account) => {
+export const accounts = pgTable(
+    "account",
+    {
+      userId: text("userId")  
+      .primaryKey()
+        .notNull()
+        .references(() => users.id, { onDelete: "cascade" }),
+      type: text("type").$type<AdapterAccountType>().notNull(),
+      provider: text("provider").notNull(),
+      providerAccountId: text("providerAccountId").notNull(),
+      refresh_token: text("refresh_token"),
+      access_token: text("access_token"),
+      expires_at: integer("expires_at"),
+      token_type: text("token_type"),
+      scope: text("scope"),
+      id_token: text("id_token"),
+      session_state: text("session_state"),
+    },
+    (account) => [
+      {
         compoundKey: primaryKey({
-            columns: [account.provider, account.providerAccountId]
-        })
-    }
-)
+          columns: [account.provider, account.providerAccountId],
+        }),
+      },
+    ]
+  )
+   
 
 export const sessions = pgTable("session", {
     sessionToken: text("sessionToken").primaryKey(),
@@ -74,3 +80,12 @@ export const authenticators = pgTable("authenticator", {
         }
     ]
 )
+
+export const accessCode = pgTable("accessCode", {
+  code: text("code").primaryKey().notNull(),
+  userId: text("userId").references(() => users.id, { onDelete: "cascade" }),
+  active: boolean("active"),
+  activated: timestamp("activated", { mode: "date" }),
+  expires: timestamp("expires", { mode: "date" })
+
+})

@@ -106,6 +106,9 @@
   // max-inline-size: var(--measure);
 }
 
+html, body {
+  height: 100%;
+}
 
 body {
   background-color: var(--dark-background);
@@ -127,3 +130,14 @@ max-inline-size: var(--measure);
 max-inline-size: calc((var(--measure) / 2));
 }
 
+.app-container {
+  display: grid;
+  min-height: 100%;
+  // grid-template-columns: 35rem 1fr;
+  line-height: 1.6;
+}
+
+.app-main {
+  height: 100%;
+  margin-left: 35rem;
+}

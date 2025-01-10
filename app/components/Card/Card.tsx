@@ -36,12 +36,15 @@ const notifications = [
 
 type CardProps = React.ComponentProps<typeof Card>
 
-export function CardDemo({ className, ...props }: CardProps) {
+export function CardDemo({ className, avatarSrc, ...delegated }: { 
+  className?: string, 
+  avatarSrc?: string | undefined
+}) {
   return (
-    <Card className={cn("w-[380px]", className)} {...props}>
+    <Card className={cn("w-[380px]", className)} {...delegated}>
       <CardHeader>
       <Avatar style={{ width: "3rem", height: "3rem", marginBlock: "1rem"}}>
-      <AvatarImage style={{ borderRadius: "100%" }} src="https://yt3.ggpht.com/81x8S82uQtmWC9sRvXI_33Nm_nhPpio1JXBp2bWi7Kyg9apsdIGaqKo6XPdiBZO-l3Jh2XS5jw=s108-c-k-c0x00ffffff-no-rj" alt="@shadcn" />
+      <AvatarImage style={{ borderRadius: "100%" }} src={avatarSrc}  alt="@shadcn" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
         <CardTitle>Notifications</CardTitle>
@@ -80,7 +83,7 @@ export function CardDemo({ className, ...props }: CardProps) {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">
+        <Button className="w-full" variant={"secondary"}>
           <Check /> Mark all as read
         </Button>
       </CardFooter>
