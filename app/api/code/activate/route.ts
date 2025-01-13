@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     } catch (err) {
         return NextResponse.json({
             success: false,
-            message: "There was an error"
+            message: "There was an error."
         })
     }
 
