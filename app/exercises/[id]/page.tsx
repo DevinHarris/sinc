@@ -1,12 +1,13 @@
 import { HeartCrack, ArrowRight, CirclePlus, Heart } from 'lucide-react'
 
-
+import AuthAccess from '@/app/AuthAccess'
 import styles from './Exercise.module.scss';
 import { Button } from '@/components/ui/button';
 
 export default function Page() {
 
     return (
+        <AuthAccess>
                 <div className={styles.exercisePage}>
                     <header className={styles.exercisePageHeader}>
                         <div className={styles.exercisePageHeaderDemoMedia}>
@@ -83,5 +84,6 @@ export default function Page() {
                     </div>
                 </main>
             </div>
+            </AuthAccess>
     )
 }
