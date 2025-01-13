@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { Toaster, toast } from 'sonner'
 import Link from "next/link"
 import { Input } from '@/src/app/components/ui/input'
 import { Label } from '@/src/app/components/ui/label'
@@ -27,29 +28,28 @@ interface codeResponseProps {
 export default function Home() {
 
     const [code, setCode] = useState("");
+    const [activateToast, setActivateToast] = useState(false);
     const [codeResponse, setCodeReponse] = useState<codeResponseProps>();
     const { register, handleSubmit } = useForm<IFormInput>();
 
-    const onSubmit: SubmitHandler<IFormInput> = data => setCode(data.code);
-
-    useEffect(() => {
-
+    const onSubmit: SubmitHandler<IFormInput> = data => {
+        const code  = data.code;
+        setCode(code);
+        
         const checkCode = async () => {
             const codeReq = await fetch(`/api/code/${code}`);
             const res = await codeReq.json();
             
             console.log(res);
             setCodeReponse(res);
+
+            if (codeResponse && codeResponse?.codeExists) {
+                setActivateToast(true);
+            }
         }
-
-
-       
 
         checkCode();
 
-    }, [code])
-
-    useEffect(() => {
 
         const activateCode = async () => {
             const codeReq = await fetch("/api/code/activate", {
@@ -62,13 +62,25 @@ export default function Home() {
 
             const res = await codeReq.json()
             console.log(res);
+            toast('Your beta access has now been activated.', {
+                description: "Please do not lose or share, this could result in your access being revoked."
+            })
         }
 
         activateCode();
-    }, [code])
+    };
+
+
+
     
     return (
         <div className={styles.home}>
+            
+            {
+                activateToast && (
+                    <Toaster />
+                )
+            }
             <div className={styles.homeContent}>
                 <h1>SINC will be publicly available soon.</h1>
                 <p>Invited to the Early Beta?</p>

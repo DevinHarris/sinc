@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { db } from "@/server";
 import { accessCode } from "@/server/schema";
 import { eq } from "drizzle-orm";
 
 export async function POST(request: NextRequest) {
     const res = await request.json();
+    const cookieStore = await cookies();
 
     const code = res.code;
 
@@ -20,7 +22,16 @@ export async function POST(request: NextRequest) {
                 activated: activatedAt,
                 expires: expiresAt
             }).where(eq(accessCode.code, code))
+
+            cookieStore.set('accessCode', code, { secure: true });
         
+        if (data.rowCount === 0) {
+            return NextResponse.json({
+                success: false,
+                message: "Access code was not activated."
+            })
+        }
+
         return NextResponse.json({
             success: true,
             activatedAt,

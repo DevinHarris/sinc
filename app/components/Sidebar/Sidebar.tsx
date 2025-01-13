@@ -1,7 +1,5 @@
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
 import { auth } from '@/auth'
-import { Button } from '@/components/ui/button'
 import { CardDemo } from '../Card'
 import styles from './Sidebar.module.scss'
 
@@ -32,7 +30,7 @@ export default async function Sidebar({
                             <Link href="/">
                                 <h1 className={styles.homeNavLogo}>SINC.</h1>
                             </Link>
-                            <span className={styles.homeNavTagline}>Master your physique.</span>
+                            <span className={styles.homeNavTagline}>Master your body.</span>
                         </nav>
                     </div>
                     <div className={styles.homeGridLeftSection}>

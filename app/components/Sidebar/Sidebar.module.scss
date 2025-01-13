@@ -1,11 +1,12 @@
 .sideBar {
+    align-self: start;
     position: fixed;
     max-width: 35rem;
     height: 100%;
     
     border-right: 1px solid var(--border-color);
     .homeGridLeft {
-        
+        align-self: start;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

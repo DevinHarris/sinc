@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/auth";
 
-export function middleware(request: NextRequest, repsonse: NextResponse) {
+export async function middleware(request: NextRequest, repsonse: NextResponse) {
 
-    console.log(request.url);
+    // const session = await auth();
 
-    return NextResponse.redirect(new URL("/join", request.url))
+    const routeName = request.nextUrl.pathname;
+
+   console.log(routeName)
+
+    return NextResponse.next();
 }
 
-export const config = {
-    matcher: "/programs/day"
-}
-
-export { auth as authMiddleware } from '@/auth';

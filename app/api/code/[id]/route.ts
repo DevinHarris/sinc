@@ -10,7 +10,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     
     if (data.length) {
         return NextResponse.json({
-            message: "<span>Access code found.</span> <h2>Your beta access has now been activated.</h2><p> Please continue to create your account.</p><p>Note: This code will be uniquely linked to your SINC account.</p><p>Please <strong>do not lose or share</strong>, this could result in your access being revoked.</p>",
+            message: "<span>Access code found.</span><p> Please continue to create your account.</p><p>Note: This code will be uniquely linked to your SINC account.</p>",
             codeExists: true,
             data
         })

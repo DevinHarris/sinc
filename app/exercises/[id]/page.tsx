@@ -1,15 +1,14 @@
-import { BadgeAlert, ArrowRight, CirclePlus } from 'lucide-react'
+import { HeartCrack, ArrowRight, CirclePlus, Heart } from 'lucide-react'
 
-import AuthAccess from '@/app/AuthAccess'
+
 import styles from './Exercise.module.scss';
 import { Button } from '@/components/ui/button';
 
 export default function Page() {
 
     return (
-          <AuthAccess>
                 <div className={styles.exercisePage}>
-                <header className={styles.exercisePageHeader}>
+                    <header className={styles.exercisePageHeader}>
                         <div className={styles.exercisePageHeaderDemoMedia}>
                         <video autoPlay loop muted>
                                     <source src="/images/exercise_demo_5.mp4" type='video/mp4'></source>
@@ -22,14 +21,15 @@ export default function Page() {
                                 
                                 <div className={styles.exerciseActions}>
                                     <CirclePlus />
-                                    <BadgeAlert />
+                                    <Heart />
+                                    <HeartCrack />
                                     <Button variant={"secondary"}>
                                         <a className={styles.learnMoreBtn} href="/">Learn More.</a>
                                     </Button>
                                 </div>
                             </div>
                         </div>
-                </header>
+                    </header>
                 <main className={styles.exerciseMainContent}>
                     <div className={styles.exerciseInstructions}>
                         <h2 className={styles.exerciseInstructionsHeading}>Instructions.</h2>
@@ -83,6 +83,5 @@ export default function Page() {
                     </div>
                 </main>
             </div>
-          </AuthAccess>
     )
 }
