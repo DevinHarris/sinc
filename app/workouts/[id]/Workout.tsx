@@ -84,8 +84,8 @@ export default function WorkoutPage() {
                 workout?.exercises.length && (
                     <ul>
                         {
-                            workout?.workoutDescription.map(exercise => (
-                                <li className={styles.exerciseName}>{exercise.children[0].text}</li>
+                            workout?.workoutDescription.map((exercise, index) => (
+                                <li className={styles.exerciseName} key={index}>{exercise.children[0].text}</li>
                             ))
                         }
                     </ul>
@@ -121,7 +121,7 @@ export default function WorkoutPage() {
                     <ul>
                         {
                             workout?.exercises.map((exercise, index) => (
-                                <li className={styles.exerciseName}><Link href={`/exercises/${exercise.id}`}>
+                                <li className={styles.exerciseName} key={index + 1}><Link href={`/exercises/${exercise.id}`}>
                                     { `${index + 1}. ${exercise.exerciseName}` }    
                                 </Link></li>
                             ))
