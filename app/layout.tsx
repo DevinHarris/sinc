@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import { Inter } from 'next/font/google'
+import { SessionProvider } from "next-auth/react";
 import "./globals.scss";
 import Sidebar from "./components/Sidebar/Sidebar";
 
@@ -21,7 +23,8 @@ export default function RootLayout({
   children: React.ReactNode,
 }>) {
   return (
-    <html lang="en">
+   <SessionProvider>
+     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
           <div className="app-container">
             <Sidebar />
@@ -31,5 +34,6 @@ export default function RootLayout({
           </div>
       </body>
     </html>
+   </SessionProvider>
   );
 }

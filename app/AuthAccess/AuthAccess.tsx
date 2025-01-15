@@ -1,17 +1,19 @@
+"use client"
+
 import Link from "next/link"
-import { auth } from '@/auth'
+import { useSession } from "next-auth/react"
 import { User2Icon } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { AuthAccessProps } from "@/types"
 
 
-export default async function AuthAccess({
+export default function AuthAccess({
     children
 }: AuthAccessProps) {
-    const session = await auth();
+    const { data: session } = useSession();
 
     return (
-        <div style={{ height: "100%" }}>
+            <div style={{ height: "100%" }}>
           {
             session && (
                 <div>

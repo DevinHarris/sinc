@@ -1,4 +1,7 @@
 .exercisePage {
+    .youtubeDemo {
+        width: 100%;
+    }
 
 
     .exercisePageHeader {
@@ -17,6 +20,7 @@
             flex-basis: 35rem;
             max-height: 100%;
 
+           
             video {
                 max-height: 100%;
             }
@@ -55,6 +59,16 @@
             justify-content: baseline;
             gap: 1rem;
             margin-block: 1rem;
+
+            .actionBtns {
+                cursor: pointer;
+                -webkit-transition: all 0.2s linear;
+
+                &:hover {
+                    color: deeppink;
+                    transform: translateY(-1px);
+                }
+            }
 
             
        }
