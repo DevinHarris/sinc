@@ -3,22 +3,56 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { CirclePlus, Heart, HeartCrack, ArrowRight, ArrowRightCircle, ArrowRightCircleIcon } from 'lucide-react'
+import { CirclePlus, Heart, HeartCrack, CircleCheck, ArrowRightCircleIcon } from 'lucide-react'
 import { Toaster, toast } from 'sonner'
 import type { Workout } from '@/lib/types';
-import VaulDrawer from '@/app/components/Drawer';
 import styles from './Workout.module.scss'
-import AuthAccess from '@/app/AuthAccess';
+
+interface ExerciseData {
+    exerciseName: string
+}
 
 export default function WorkoutPage() {
 
     const [workout, setWorkout] = useState<Workout>();
+    const [completed, setCompleted] = useState<string[]>([]);
     const params = useParams<{ id: string }>();
+
+
+    useEffect(() => {
+       
+        if (workout && completed.length === workout.exercises.length) {
+            toast.message('Workout Complete.', {
+                description: `You just finished ${workout?.workoutName}. Remember to rate for other members.`
+            })
+        }
+
+    }, [completed])
 
     const handleOnAdd = () => {
         toast.message('Workout added!', {
             description: `${workout?.workoutName} has been added to your workout space.`
         })
+    }
+
+    const handleOnCompleted = (exercise: ExerciseData ) => {
+       
+        
+        if (!completed.includes(exercise.exerciseName)) {
+            setCompleted(prevState => {
+                
+
+                return [...prevState, exercise.exerciseName]
+            })
+
+            
+            toast.success('You completed an exercise!');
+        } else {
+            toast.error('You already completed this exercise.');
+        }
+
+        
+        
     }
 
     const handleOnLike = () => {
@@ -53,7 +87,6 @@ export default function WorkoutPage() {
 
     return (
         
-        <AuthAccess>
         <div className={styles.exercisePage}>
             <Toaster />
         <header className={styles.exercisePageHeader}>
@@ -73,6 +106,10 @@ export default function WorkoutPage() {
                                     <Heart className={styles.actionBtns} onClick={handleOnLike} />
                                     <HeartCrack className={styles.actionBtns} onClick={handleOnDislike} />
                                 </div>
+                    <div className={styles.workoutProgress}>
+                        <span><strong>Workout Progress: </strong> {completed.length} / <strong>{workout?.exercises.length}</strong></span>
+                        <div className={styles.progressBar} style={{ width: `${(completed.length * 100) / workout?.exercises?.length!}%`, backgroundColor: `${completed.length ===  workout?.exercises.length ? 'hsl(182, 91%, 65%)' : 'hsl(0, 0%, 37%)'}` }}></div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -122,9 +159,11 @@ export default function WorkoutPage() {
                     <ul>
                         {
                             workout?.exercises.map((exercise, index) => (
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '5px' }} className={styles.exerciseName} key={index + 1}><Link href={`/exercises/${exercise.id}`}>
+                                <li className={styles.exerciseName} key={index + 1}><Link href={`/exercises/${exercise.id}`}>
                                     { `${index + 1}. ${exercise.exerciseName}` }    
-                                </Link> <ArrowRightCircleIcon size={15}  /></li>
+                                </Link> <ArrowRightCircleIcon style={{ display: 'inline-block' }} size={15}  />
+                                  <CircleCheck onClick={() => handleOnCompleted(exercise) } />
+                                </li>
                             ))
                         }
                     </ul>
@@ -134,6 +173,5 @@ export default function WorkoutPage() {
     </main>
    
 </div>
-</AuthAccess>
     )
 }

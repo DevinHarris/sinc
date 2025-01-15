@@ -31,6 +31,8 @@
     --chart-4: 240 1% 42%;
     --chart-5: 240 2% 26%;
 
+    --fluid-text: clamp(1rem, 2.5vw + 1rem, 2rem);
+
     --ratio: 1.5;
   --measure-ratio: 1.5rem;
   --s-5: calc(var(--s-4) / var(--ratio));

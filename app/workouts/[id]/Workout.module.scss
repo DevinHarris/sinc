@@ -5,6 +5,7 @@
 
 
     .exercisePageHeader {
+        
         display: flex;
         // height: 20rem
         position: sticky;
@@ -20,7 +21,7 @@
        .exercisePageHeaderDemoMedia {
             min-width: 20rem;
             max-height: 100%;
-            flex-grow: 1;
+            flex: 1;
 
            
             video {
@@ -31,24 +32,23 @@
 
        .exercisePageHeaderInfo {
             // flex-grow: 1;
+            
             align-items: flex-end;
             padding-inline: 2rem;
             padding-block: 1rem;
             display: flex;
+            flex: 1;
             justify-content: center;
 
             .exercisePageHeaderInfoContent {
                 .exerciseName {
+                    
+        align-items: baseline;
                     display: flex;
-                    font-size: 2rem;
+                    font-size: clamp(1rem, 2vw, 2rem);
                     font-weight: 700;
                     text-transform: uppercase;
                     margin-block-end: 1rem;
-
-                    @media (max-width: 1400px) {
-                        font-size: 1rem;
-                    }
-                    
                 }
 
                 .exerciseDescription {
@@ -79,6 +79,17 @@
             
        }
 
+       .workoutProgress {
+
+            .progressBar {
+                margin-block-start: 1rem;
+                height: 5px;
+                border-radius: 10px;
+                -webkit-transition: all 0.5s linear;
+                
+            }
+       }
+
 
     }
 
@@ -87,7 +98,7 @@
         margin-block-start: 2em;
 
         .exerciseInstructionsHeading {
-            font-size: 1.8rem;
+            font-size: var(--fluid-text);
             font-weight: 700;
             margin-block-end: 2rem;
             text-transform: uppercase;
@@ -123,7 +134,7 @@
     }
 
     .exercisesUsed {
-        font-size: 1.8rem;
+        font-size: var(--fluid-text);
         font-weight: 700;
         text-transform: uppercase;
 

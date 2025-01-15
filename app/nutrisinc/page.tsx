@@ -1,17 +1,13 @@
+import NutriSincPage from './NutriSinc'
 import AuthAccess from '../AuthAccess';
+
 import styles from './nutrisincPage.module.scss';
 
-export default function nutrisincPage() {
+export default function Page() {
 
     return (
-        <div className={styles.nutrisincPageWrapper}>
-            <h1>nutriSINC</h1>
-
-            <AuthAccess>
-                <div className={styles.nutrisincAppContainer}>
-                    <p>OMG PROTECTED CONTENT!</p>
-                </div>
-            </AuthAccess>
-        </div>
+       <AuthAccess>
+            <NutriSincPage />
+       </AuthAccess>
     )
 }
