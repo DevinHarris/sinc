@@ -43,6 +43,10 @@
                     font-weight: 700;
                     text-transform: uppercase;
                     margin-block-end: 1rem;
+
+                    @media (max-width: 1400px) {
+                        font-size: 1rem;
+                    }
                     
                 }
 
