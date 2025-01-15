@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { CirclePlus, Heart, HeartCrack } from 'lucide-react'
+import { CirclePlus, Heart, HeartCrack, ArrowRight, ArrowRightCircle, ArrowRightCircleIcon } from 'lucide-react'
 import { Toaster, toast } from 'sonner'
 import type { Workout } from '@/lib/types';
 import VaulDrawer from '@/app/components/Drawer';
@@ -122,9 +122,9 @@ export default function WorkoutPage() {
                     <ul>
                         {
                             workout?.exercises.map((exercise, index) => (
-                                <li className={styles.exerciseName} key={index + 1}><Link href={`/exercises/${exercise.id}`}>
+                                <li style={{ display: 'flex', alignItems: 'center', gap: '5px' }} className={styles.exerciseName} key={index + 1}><Link href={`/exercises/${exercise.id}`}>
                                     { `${index + 1}. ${exercise.exerciseName}` }    
-                                </Link></li>
+                                </Link> <ArrowRightCircleIcon size={15}  /></li>
                             ))
                         }
                     </ul>
