@@ -137,11 +137,18 @@ max-inline-size: calc((var(--measure) / 2));
 .app-container {
   display: grid;
   min-height: 100%;
-  // grid-template-columns: 35rem 1fr;
+  grid-template-columns: 35rem 1fr;
   line-height: 1.6;
+
+
+
+  @media(max-width: 1000px) {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  } 
 }
 
 .app-main {
-  height: 100%;
-  margin-left: 35rem;
+  // height: 100%;
+  // margin-left: 35rem;
 }

@@ -6,19 +6,21 @@
 
     .exercisePageHeader {
         display: flex;
-        // height: 20rem;
-        
-        position: fixed;
+        // height: 20rem
+        position: sticky;
         top: 0;
         left: 35rem;
-        width: 100%;
         background-color: hsl(240deg 4% 9.8%);
         
          border-bottom: 1px solid var(--border-color);
+
+         @media (max-width: 1400px) {
+            flex-wrap: wrap;
+         }
        .exercisePageHeaderDemoMedia {
             min-width: 20rem;
-            flex-basis: 35rem;
             max-height: 100%;
+            flex: 1;
 
            
             video {
@@ -34,7 +36,6 @@
             padding-block-end: 1rem;
             display: flex;
             justify-content: center;
-            flex-basis: 60rem;
 
             .exercisePageHeaderInfoContent {
                 .exerciseName {
@@ -78,7 +79,7 @@
 
     .exerciseMainContent {
         padding-inline: 2rem;
-        margin-block-start: 22em;
+        margin-block-start: 2em;
 
         .exerciseInstructionsHeading {
             font-size: 1.8rem;
@@ -110,5 +111,22 @@
         }
     }
 
+    .exerciseName {
 
+        font-weight: 600;
+        margin-block-end: 1rem;
+    }
+
+    .exercisesUsed {
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+
+       
+    }
+
+    p {
+            
+        margin-block-end: 2rem;
+        }
 }

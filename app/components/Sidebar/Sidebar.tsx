@@ -39,10 +39,12 @@ export default async function Sidebar({
                                 <h2 className={styles.welcomeBackMsg}>Welcome back, <strong>{session.user?.name?.split(" ")[0]}</strong>. Here's your day at a glance.</h2>
                             )
                         }
-                        <CardDemo avatarSrc={session?.user?.image!} />
                     </div>
-                    <div className={styles.homeGridLeftSection}>
+                    <div className={`${styles.homeGridLeftSection} ${styles.notifications}`}>
+                        
                         <div className={styles.homeGridContent}>
+                            
+                        <CardDemo avatarSrc={session?.user?.image!} />
                             <div className={styles.homeGridContentDescriptions}>
                                 <p className={styles.homeDescription}><strong>SINC</strong> is your all-in-one gym companion, designed to help you achieve your fitness goals with ease. Whether you're building muscle, cutting fat, or planning the perfect workout routine, SINC offers personalized tools and guidance tailored to your unique needs.</p>
                                 <p className={styles.homeDescription}>From customized meal plans and detailed progress tracking to expert tips and community support, SINC empowers you to stay consistent and reach new heights.</p>

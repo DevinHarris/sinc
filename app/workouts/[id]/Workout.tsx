@@ -52,8 +52,9 @@ export default function WorkoutPage() {
 
 
     return (
+        
+        <AuthAccess>
         <div className={styles.exercisePage}>
-            <AuthAccess>
             <Toaster />
         <header className={styles.exercisePageHeader}>
             <div className={styles.exercisePageHeaderDemoMedia}>
@@ -131,8 +132,8 @@ export default function WorkoutPage() {
            }
         </div>
     </main>
-    </AuthAccess>
+   
 </div>
-
+</AuthAccess>
     )
 }
