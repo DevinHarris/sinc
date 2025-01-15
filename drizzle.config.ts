@@ -11,6 +11,6 @@ export default defineConfig({
     schema: './server/schema.ts',
     out: './server/migrations',
     dbCredentials: {
-        url: process.env.AUTH_DRIZZLE_URL!
+        url: process.env.NEXT_PUBLIC_DATABASE_URL!
     }
 }) satisfies Config;

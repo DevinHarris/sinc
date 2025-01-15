@@ -29,10 +29,23 @@ export default function WorkoutPage() {
 
     }, [completed])
 
-    const handleOnAdd = () => {
+    const handleOnAdd = async () => {
+
+        const workoutReq = await fetch("/api/workout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ workoutName: workout?.workoutName, sourceId: workout?.id })
+        })
+
+        const res = await workoutReq.json();
+        console.log(res);
         toast.message('Workout added!', {
             description: `${workout?.workoutName} has been added to your workout space.`
         })
+
+        console.log(workout);
     }
 
     const handleOnCompleted = (exercise: ExerciseData) => {

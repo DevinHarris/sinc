@@ -89,3 +89,9 @@ export const accessCode = pgTable("accessCode", {
   expires: timestamp("expires", { mode: "date" })
 
 })
+
+export const userWorkout = pgTable("userWorkout", {
+  userId: text("userId").references(() => users.id, { onDelete: "cascade" }),
+  workoutId: text("workoutId"),
+  workoutName: text("workoutName")
+})
