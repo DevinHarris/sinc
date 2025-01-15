@@ -42,13 +42,18 @@
                     font-size: 2rem;
                     font-weight: 700;
                     text-transform: uppercase;
-                    margin-block-end: 1rem;
+                    margin-block: 1rem;
+
+                    @media (max-width: 1400px) {
+                        font-size: 1rem;
+                    }
                     
                 }
 
                 .exerciseDescription {
                     line-height: 1.6;
                     padding-inline-end: 2rem;
+                    font-size: 1rem;
                     font-weight: 600;
                 }
             }
