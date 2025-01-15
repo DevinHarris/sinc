@@ -23,7 +23,7 @@ export default function WorkoutPage() {
        
         if (workout && completed.length === workout.exercises.length) {
             toast.message('Workout Complete.', {
-                description: `You just finished ${workout?.workoutName}. Remember to rate for other members.`
+                description: `You just finished ${workout?.workoutName}. Remember to rate for other SINC members.`
             })
         }
 
@@ -35,7 +35,7 @@ export default function WorkoutPage() {
         })
     }
 
-    const handleOnCompleted = (exercise: ExerciseData ) => {
+    const handleOnCompleted = (exercise: ExerciseData) => {
        
         
         if (!completed.includes(exercise.exerciseName)) {
