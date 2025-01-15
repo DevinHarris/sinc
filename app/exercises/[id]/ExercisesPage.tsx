@@ -87,31 +87,21 @@ export default function ExercisePage() {
                     <div className={styles.exerciseInstructions}>
                         <h2 className={styles.exerciseInstructionsHeading}>Instructions.</h2>
                         <div className={styles.exerciseInstructionsContent}>
-                            <div className={styles.exerciseSteps}>
-                                <h3>Start Position.</h3>
-                                <p>Stand with your feet shoulder-width apart, holding a dumbbell in each hand.</p>
-                                <p>Hinge at your hips, keeping your back flat and chest up, until your torso is almost parallel to the floor.</p>
-                                <p>Let the dumbbells hang straight down from your shoulders, palms facing each other (neutral grip).</p>
-                            </div>
-                            <div className={styles.exerciseSteps}>
-                                <h3>Row the Dumbbells</h3>
-                                <p>Pull the dumbbells toward your torso by bending your elbows and squeezing your shoulder blades together.</p>
-                                <p>Keep your elbows close to your body as you row.</p>
-                                <p>Pause briefly at the top when the dumbbells are near your ribs.</p>
-                            </div>
-                            <div className={styles.exerciseSteps}>
-                                <h3>Lower the Dumbbells</h3>
-                                <p>Slowly lower the dumbbells back to the start position in a controlled manner.</p>
-                                <p>Maintain a neutral spine and avoid rounding your back.</p>
-                            </div>
-                            <div className={styles.exerciseSteps}>
-                                <h3>Exercise Pro Tips. <ArrowRight /></h3>
-                                <p>Focus on Form: Avoid using momentum—control the movement to maximize muscle engagement.</p>
-                                <p>Brace Your Core: Keep your abs tight to protect your lower back.</p>
-                                <p>Adjust Your Grip: A wider grip targets the traps and rear delts, while a closer grip emphasizes the lats.</p>
-                            </div>
-                            
-                        </div>
+                                <div className={styles.exerciseSteps}>
+                                    {
+                                        exerciseData?.exerciseInstructions.length && (
+                                            <ul>
+                                                {
+                                                    exerciseData?.exerciseInstructions.map((instruction, index) => (
+                                                        <li className={styles.exerciseName} key={index}>{index + 1} - {instruction.children[0].text}</li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        )
+                                }
+                     </div>
+                
+            </div>
                     </div>
                     <div className={styles.exerciseInstructions}>
                         <h2 className={styles.exerciseInstructionsHeading}>Rep and Set Range Recommendations.</h2>

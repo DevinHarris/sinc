@@ -19,7 +19,13 @@ export type ExerciseData = {
     exerciseName: string,
     expertDemonstration: string,
     exerciseDescription: string,
-    exerciseInstruction: {},
+    exerciseInstructions: [{
+        children: [
+            {
+                text: string
+            }
+        ]
+    }],
     targetedMuscle: {}
 }
 

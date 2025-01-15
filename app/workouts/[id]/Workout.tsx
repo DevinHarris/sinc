@@ -48,7 +48,7 @@ export default function WorkoutPage() {
             
             toast.success('You completed an exercise!');
         } else {
-            toast.error('You already completed this exercise.');
+            toast.error('You\'ve already completed this exercise.');
         }
 
         
