@@ -1,5 +1,7 @@
 .sideBar {
     position: sticky;
+    top: 0;
+    left: 0;
     max-width: 35rem;
     // height: 100%;
 
@@ -15,12 +17,11 @@
         max-width: 100%;
     }
     
-    border-right: 1px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
     .homeGridLeft {
         align-self: start;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         padding-block-start: 3rem;
         padding-inline: 2rem;
         height: 100%;

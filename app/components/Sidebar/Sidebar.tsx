@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { auth } from '@/auth'
+import { auth, signOut } from '@/auth'
 import { CardDemo } from '../Card'
 import styles from './Sidebar.module.scss'
+import { Button } from '@/components/ui/button'
 
 export default async function Sidebar({
   
@@ -44,7 +45,7 @@ export default async function Sidebar({
                                <div>
                                  <h2 className={styles.welcomeBackMsg}>Welcome back, <strong>{session.user?.name?.split(" ")[0]}</strong>. Here's your day at a glance.</h2>
                                  <nav className='w-full' style={{ paddingInlineEnd: '1rem'}}>
-                                    <ul style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                                    <ul style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'baseline' }}>
                                         <li>
                                             <Link href="/me"><strong>Dashboard</strong></Link>
                                         </li>
@@ -56,6 +57,14 @@ export default async function Sidebar({
                                         </li>
                                         <li>
                                             <Link href="/workouts"><strong>Workouts</strong></Link>
+                                        </li>
+                                        <li>
+                                            <form action={ async () => {
+                                                "use server"
+                                                await signOut()
+                                            } }>
+                                                    <Button style={{ fontSize: '0.75rem' }}><strong>SIGN OUT</strong></Button>
+                                            </form>
                                         </li>
                                     </ul>
                                  </nav>

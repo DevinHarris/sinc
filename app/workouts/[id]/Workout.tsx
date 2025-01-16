@@ -94,7 +94,7 @@ export default function WorkoutPage() {
                     <div className={styles.exercisePageHeaderDemoMedia}>
               
             <video autoPlay loop muted>
-                        <source src={`/images/${workout?.workoutDisplayMedia}`} type='video/mp4'></source>
+                        <source src={workout.workoutDisplayMedia} type='video/mp4'></source>
                     </video>
             </div>
                 )

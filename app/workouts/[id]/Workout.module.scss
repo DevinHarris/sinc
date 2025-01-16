@@ -13,7 +13,7 @@
         left: 35rem;
         background-color: hsl(240deg 4% 9.8%);
         
-         border-bottom: 1px solid var(--border-color);
+         border-bottom: 3px solid var(--border-color);
 
          @media (max-width: 1400px) {
             flex-wrap: wrap;
@@ -25,7 +25,9 @@
 
            
             video {
-                max-height: 100%;
+                height: 100%;
+                object-fit: cover;
+                aspect-ratio: 2 / 1;
             }
 
        }
