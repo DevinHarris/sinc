@@ -39,7 +39,7 @@ export default async function Sidebar({
                                <div>
                                  <h2 className={styles.welcomeBackMsg}>Welcome back, <strong>{session.user?.name?.split(" ")[0]}</strong>. Here's your day at a glance.</h2>
                                  <nav className='w-full' style={{ paddingInlineEnd: '1rem'}}>
-                                    <ul style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <ul style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
                                         <li>
                                             <Link href="/me"><strong>Dashboard</strong></Link>
                                         </li>
