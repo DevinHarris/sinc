@@ -6,6 +6,9 @@
         
          padding-inline: 3rem;
          padding-block: 3rem;
+         position: sticky;
+         top: 0;
+        //  left: 35rem;
         h1 {
             font-size: clamp(1rem, 5vw, 2.5rem);
             font-weight: 700;
