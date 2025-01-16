@@ -20,10 +20,18 @@ export async function POST(request: NextRequest) {
     // console.log('response', res.workout);
     
     const insertIntoDb = await db.insert(userWorkout).values({
+        userWorkoutId: `${id}${res.sourceId}`,
         workoutName: res.workoutName,
         workoutId: res.sourceId,
-        userId: id
+        userId: id!
     });
+
+    if (!insertIntoDb) {
+        return NextResponse.json({
+            success: false,
+            message: `There was an error!`
+        })
+    }
 
     // console.log(insertIntoDb)
     // const dbRes = await db.insert(userWorkout).values(res);

@@ -38,6 +38,15 @@ CREATE TABLE "session" (
 	"expires" timestamp NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE "userWorkout" (
+	"userWorkoutId" text PRIMARY KEY NOT NULL,
+	"userId" text,
+	"workoutId" text,
+	"workoutName" text,
+	"workoutNotes" text,
+	"completedExercises" text[]
+);
+--> statement-breakpoint
 CREATE TABLE "user" (
 	"id" text PRIMARY KEY NOT NULL,
 	"name" text,
@@ -53,7 +62,15 @@ CREATE TABLE "verificationToken" (
 	"expires" timestamp NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE "workoutAnalytic" (
+	"workoutId" text PRIMARY KEY NOT NULL,
+	"likes" integer,
+	"dislikes" integer,
+	"addsToWorkoutSpace" integer
+);
+--> statement-breakpoint
 ALTER TABLE "accessCode" ADD CONSTRAINT "accessCode_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "account" ADD CONSTRAINT "account_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "authenticator" ADD CONSTRAINT "authenticator_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "session" ADD CONSTRAINT "session_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;
+ALTER TABLE "session" ADD CONSTRAINT "session_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "userWorkout" ADD CONSTRAINT "userWorkout_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;

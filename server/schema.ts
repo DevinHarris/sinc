@@ -1,6 +1,8 @@
+import { table } from "console"
 import { boolean, timestamp, pgTable, text, primaryKey, integer } from "drizzle-orm/pg-core"
 
 import type { AdapterAccountType } from "next-auth/adapters"
+import { number } from "zod"
 
 export const users = pgTable("user", {
     id: text("id").primaryKey().notNull(),
@@ -91,13 +93,23 @@ export const accessCode = pgTable("accessCode", {
 })
 
 export const userWorkout = pgTable("userWorkout", {
+  userWorkoutId: text("userWorkoutId").primaryKey(),
   userId: text("userId").references(() => users.id, { onDelete: "cascade" }),
   workoutId: text("workoutId"),
   workoutName: text("workoutName"),
+  workoutNotes: text("workoutNotes"),
+  completedExercises: text("completedExercises").array()
 }, 
-  (userWorkout) => [{
-    compositePK: primaryKey({
-      columns: [userWorkout.userId, userWorkout.workoutId, userWorkout.workoutName]
-    })
+ (table) => {
+  return [{
+    pk: primaryKey({ columns: [table.userId, table.workoutId] }),
   }]
+ }
 )
+
+export const workoutAnalytics = pgTable("workoutAnalytic", {
+  workoutId: text("workoutId").primaryKey(),
+  likes: integer("likes"),
+  dislikes: integer("dislikes"),
+  addsToWorkoutSpace: integer("addsToWorkoutSpace")
+})

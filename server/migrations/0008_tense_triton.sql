@@ -1,1 +1,0 @@
-ALTER TABLE "userWorkout" ADD COLUMN "workoutId" text;

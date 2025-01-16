@@ -1,5 +1,5 @@
 {
-  "id": "99b2a68c-980f-43a7-a047-db25b9093eb0",
+  "id": "5d48f8c1-d26a-4f37-ac46-0bddefdc10c1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -282,6 +282,69 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.userWorkout": {
+      "name": "userWorkout",
+      "schema": "",
+      "columns": {
+        "userWorkoutId": {
+          "name": "userWorkoutId",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "workoutId": {
+          "name": "workoutId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "workoutName": {
+          "name": "workoutName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "workoutNotes": {
+          "name": "workoutNotes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "completedExercises": {
+          "name": "completedExercises",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "userWorkout_userId_user_id_fk": {
+          "name": "userWorkout_userId_user_id_fk",
+          "tableFrom": "userWorkout",
+          "tableTo": "user",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.user": {
       "name": "user",
       "schema": "",
@@ -354,6 +417,43 @@
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.workoutAnalytic": {
+      "name": "workoutAnalytic",
+      "schema": "",
+      "columns": {
+        "workoutId": {
+          "name": "workoutId",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "likes": {
+          "name": "likes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dislikes": {
+          "name": "dislikes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "addsToWorkoutSpace": {
+          "name": "addsToWorkoutSpace",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

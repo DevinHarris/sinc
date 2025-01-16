@@ -2,56 +2,81 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useParams } from 'next/navigation';
 import { CirclePlus, Heart, HeartCrack, CircleCheck, ArrowRightCircleIcon } from 'lucide-react'
 import { Toaster, toast } from 'sonner'
 import type { Workout } from '@/lib/types';
-import styles from './Workout.module.scss'
+import styles from './UserWorkout.module.scss'
+import { Button } from '@/components/ui/button';
 
 interface ExerciseData {
     exerciseName: string
 }
 
-export default function WorkoutPage() {
+interface Inputs {
+    workoutNotes: string
+}
 
+export default function WorkoutPage() {
+    const { register, handleSubmit } = useForm<Inputs>();
     const [workout, setWorkout] = useState<Workout>();
+    const [workoutNotes, setWorkoutNotes] = useState("");
     const [completed, setCompleted] = useState<string[]>([]);
     const params = useParams<{ id: string }>();
+
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+         const res = await fetch('/api/workout/me', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({ workoutNotes, sourceId: workout?.id  })
+         })
+
+         toast.success('Workout note saved!');
+
+
+         const workoutNotesData = await res.json();
+         console.log(workoutNotesData)
+    }
 
 
     useEffect(() => {
        
-        if (workout && completed.length === workout.exercises.length) {
-            toast.message('Workout Complete.', {
-                description: `You just finished ${workout?.workoutName}. Remember to rate for other SINC members.`
+        // if (workout && completed.length === workout.exercises.length) {
+        //     toast.message('Workout Complete.', {
+        //         description: `You just finished ${workout?.workoutName}. Remember to rate for other SINC members.`
+        //     })
+        // }
+
+    }, [workoutNotes])
+
+
+    const handleOnCompleted = (exercise: ExerciseData) => {
+       
+        
+        if (!completed.includes(exercise.exerciseName)) {
+            setCompleted(prevState => {
+                
+
+                return [...prevState, exercise.exerciseName]
             })
+
+            
+            toast.success('You completed an exercise!');
+        } else {
+            toast.error('You\'ve already completed this exercise.');
         }
 
-    }, [completed])
+        
+        
+    }
 
-    const handleOnAdd = async () => {
+    const handleAddWorkoutNotes = (e) => {
+        console.log('triggered!')
 
-        const workoutReq = await fetch("/api/workout", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ workoutName: workout?.workoutName, sourceId: workout?.id })
-        })
-
-        const res = await workoutReq.json();
-        console.log(res);
-
-        if (!res.success) {
-            toast.message('Workout couldn\'t be added', {
-                description: `${workout?.workoutName} is already in your Workout Space.`
-            })
-        }
-        toast.message('Workout added!', {
-            description: `${workout?.workoutName} has been added to your workout space.`
-        })
-
-        console.log(workout);
     }
 
     const handleOnLike = () => {
@@ -105,11 +130,13 @@ export default function WorkoutPage() {
                     <p className={styles.exerciseDescription}>{workout?.workoutGoals}</p>
                     
                     <div className={styles.exerciseActions}>
-                                    <CirclePlus className={styles.actionBtns} onClick={handleOnAdd}/>
                                     <Heart className={styles.actionBtns} onClick={handleOnLike} />
                                     <HeartCrack className={styles.actionBtns} onClick={handleOnDislike} />
                                 </div>
-                
+                    <div className={styles.workoutProgress}>
+                        <span><strong>Workout Progress: </strong> {completed.length} / <strong>{workout?.exercises.length}</strong></span>
+                        <div className={styles.progressBar} style={{ width: `${(completed.length * 100) / workout?.exercises?.length!}%`, backgroundColor: `${completed.length ===  workout?.exercises.length ? 'hsl(182, 91%, 65%)' : 'hsl(0, 0%, 37%)'}` }}></div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -134,21 +161,26 @@ export default function WorkoutPage() {
             </div>
         </div>
         <div className={styles.exerciseInstructions}>
-            <h2 className={styles.exerciseInstructionsHeading}>Rep and Set Range Recommendations.</h2>
+            <h2 className={styles.exerciseInstructionsHeading}>Workout Notes.</h2>
             <div className={styles.exerciseInstructionsContent}>
-                <div className={styles.exerciseSteps}>
-                    <h3>For Hypertrophy (Muscle Growth)</h3>
-                    <p>Reps: 8–12 per set / Sets: 3–5 </p>
+                <div className={styles.workoutNotesContainer}>
+                    
+                <div className={styles.workoutNotes}>
+                        {
+                            workoutNotes && (
+                                <>
+                                    {workoutNotes}
+                                </>
+                            )
+                        }
                 </div>
-                <div className={styles.exerciseSteps}>
-                    <h3>For Strength</h3>
-                    <p>Reps: 4–6 per set / Sets: 4–6</p>
+                <form className={styles.workoutNotesForm} onSubmit={handleSubmit(onSubmit)}>
+                        <textarea {...register("workoutNotes")} className={styles.workoutNotesTextArea} onChange={(e) => setWorkoutNotes(e.target.value)}>
+
+                        </textarea>
+                        <Button>Save notes.</Button>
+                    </form>
                 </div>
-                <div className={styles.exerciseSteps}>
-                    <h3>For Toning (Endurance and Definition)</h3>
-                    <p>Reps: Time-based holds (20–60 seconds per set) / Sets: 2–4</p>
-                </div>
-                
             </div>
         </div>
         <div className={styles.navigation}>
@@ -162,6 +194,7 @@ export default function WorkoutPage() {
                                 <li className={styles.exerciseName} key={index + 1}><Link href={`/exercises/${exercise.id}`}>
                                     { `${index + 1}. ${exercise.exerciseName}` }    
                                 </Link> <ArrowRightCircleIcon style={{ display: 'inline-block' }} size={15}  />
+                                  <CircleCheck onClick={() => handleOnCompleted(exercise) } />
                                 </li>
                             ))
                         }
