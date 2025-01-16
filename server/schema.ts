@@ -93,5 +93,11 @@ export const accessCode = pgTable("accessCode", {
 export const userWorkout = pgTable("userWorkout", {
   userId: text("userId").references(() => users.id, { onDelete: "cascade" }),
   workoutId: text("workoutId"),
-  workoutName: text("workoutName")
-})
+  workoutName: text("workoutName"),
+}, 
+  (userWorkout) => [{
+    compositePK: primaryKey({
+      columns: [userWorkout.userId, userWorkout.workoutId, userWorkout.workoutName]
+    })
+  }]
+)
