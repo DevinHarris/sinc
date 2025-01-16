@@ -74,11 +74,6 @@ export default function WorkoutPage() {
         
     }
 
-    const handleAddWorkoutNotes = (e) => {
-        console.log('triggered!')
-
-    }
-
     const handleOnLike = () => {
         toast.success(`You liked ${workout?.workoutName}`)
     }
