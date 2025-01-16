@@ -50,7 +50,7 @@ export default async function Page() {
             ) : (
                 <div>
                     <p>You have currently have no workouts.</p>
-                    <p>Add workouts to your space <Link href="/workouts"><strong>here</strong>.</Link></p>
+                    <p>Add them to your space <Link href="/workouts"><strong>here</strong>.</Link></p>
                 </div>
             )
            }
