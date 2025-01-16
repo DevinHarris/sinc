@@ -12,8 +12,6 @@ import {
 } from "@/src/app/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-
 const notifications = [
   {
     title: "LA Fitness is getting busier. Please plan accordingly.",
@@ -43,10 +41,7 @@ export function CardDemo({ className, avatarSrc, ...delegated }: {
   return (
     <Card className={cn("w-[380px]", className)} {...delegated}>
       <CardHeader>
-      <Avatar style={{ width: "3rem", height: "3rem", marginBlock: "1rem"}}>
-      <AvatarImage style={{ borderRadius: "100%" }} src={avatarSrc}  alt="@shadcn" />
-      <AvatarFallback>CN</AvatarFallback>
-    </Avatar>
+     
         <CardTitle>Notifications</CardTitle>
         <CardDescription>{`You have ${notifications.length} unread messages.`}</CardDescription>
       </CardHeader>

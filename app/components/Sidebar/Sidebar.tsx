@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { auth } from '@/auth'
 import { CardDemo } from '../Card'
 import styles from './Sidebar.module.scss'
@@ -31,6 +32,10 @@ export default async function Sidebar({
                                 <h1 className={styles.homeNavLogo}>SINC.</h1>
                             </Link>
                             <span className={styles.homeNavTagline}>Master your body.</span>
+                            <Avatar style={{ width: "3rem", height: "3rem", marginBlock: "1rem"}}>
+                                <AvatarImage style={{ borderRadius: "100%" }} src={session?.user?.image!}  alt="@shadcn" />
+                                <AvatarFallback>{session?.user?.name?.charAt(0)}</AvatarFallback>
+                            </Avatar>
                         </nav>
                     </div>
                     <div className={styles.homeGridLeftSection}>
