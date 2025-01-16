@@ -27,8 +27,8 @@ export default async function Page() {
     return (
         <div className={styles.workoutsPageWrapper}>
         <header className={styles.workoutsHeader}>
-            <h1>Workouts by SINC</h1>
-            <p>Tailored routines designed to maximize results and elevate your training. From strength to aesthetics, SINC provides expert-crafted programs for every goal. Stay focused, stay consistent, and stay in SINC.</p>
+            <h1>This is your Workout Space.</h1>
+            <p>Your ultimate training companion. Workout Space provides expertly curated programs, in-depth exercise guides, and progress tracking to elevate your fitness game. Whether you're chasing strength, aesthetics, or endurance, this is where results take shape.</p>
         </header>
         <main className={styles.mainWorkoutsContent}>
             <h2>Your Workout Space:</h2>

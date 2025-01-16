@@ -13,7 +13,7 @@ const inter = Inter({
 
 
 export const metadata: Metadata = {
-  title: "SINC, your new fitness pal.",
+  title: "SINC | Elevate Your Fitness Journey.",
   description: "SINC fitness app.",
 };
 

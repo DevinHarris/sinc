@@ -12,7 +12,7 @@ export default async function NutriSincPage() {
            <div className={styles.workoutsPageWrapper}>
                 <header className={styles.workoutsHeader}>
                     <h1> NurtiSINC</h1>
-                    <p>Tailored routines designed to maximize results and elevate your training. From strength to aesthetics, SINC provides expert-crafted programs for every goal. Stay focused, stay consistent, and stay in SINC.</p>
+                    <p>Fuel your fitness journey with science-backed nutrition. NutriSINC is your go-to hub for meal plans, recipes, and nutritional advice tailored to your goals—whether you're cutting, bulking, or maintaining. Simplify your diet with tools designed to optimize performance, recovery, and overall health.</p>
                 </header>
                 <main className={styles.mainWorkoutsContent}>
                     <h2>Your Meal Plan:</h2>
