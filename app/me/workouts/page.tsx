@@ -39,7 +39,7 @@ export default async function Page() {
                     {
                         userWorkoutData.map((workout, index) => {
                             return (
-                                <li><Link href={`/workouts/${workout.workoutId}`}>{index + 1}: <strong>{workout.workoutName}</strong></Link></li>
+                                <li key={index + 1}><Link href={`/workouts/${workout.workoutId}`}>{index + 1}: <strong>{workout.workoutName}</strong></Link></li>
                             )
                         })
                     }

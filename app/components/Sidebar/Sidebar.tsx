@@ -49,6 +49,9 @@ export default async function Sidebar({
                                         <li>
                                             <Link href="/nutrisinc"><strong>NutriSINC</strong></Link>
                                         </li>
+                                        <li>
+                                            <Link href="/workouts"><strong>Workouts</strong></Link>
+                                        </li>
                                     </ul>
                                  </nav>
                                 </div>

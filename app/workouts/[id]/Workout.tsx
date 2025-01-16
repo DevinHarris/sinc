@@ -103,12 +103,16 @@ export default function WorkoutPage() {
         <div className={styles.exercisePage}>
             <Toaster />
         <header className={styles.exercisePageHeader}>
-            <div className={styles.exercisePageHeaderDemoMedia}>
+            {
+                workout && (
+                    <div className={styles.exercisePageHeaderDemoMedia}>
               
             <video autoPlay loop muted>
-                        <source src="/images/exercise_demo_1.mp4" type='video/mp4'></source>
+                        <source src={`/images/${workout?.workoutDisplayMedia}`} type='video/mp4'></source>
                     </video>
             </div>
+                )
+            }
             <div className={styles.exercisePageHeaderInfo}>
                 <div className={styles.exercisePageHeaderInfoContent}>
                     <h1 className={styles.exerciseName}>{workout?.workoutName}</h1>

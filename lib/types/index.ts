@@ -32,6 +32,7 @@ export type ExerciseData = {
 export type Workout = {
     id: string,
     workoutName: string,
+    workoutDisplayMedia: string,
     workoutGoals: string,
     workoutDescription: [{
         children: [

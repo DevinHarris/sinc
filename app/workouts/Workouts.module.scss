@@ -7,7 +7,7 @@
          padding-inline: 3rem;
          padding-block: 3rem;
         h1 {
-            font-size: clamp(1vw, 2vw, 4vw);
+            font-size: clamp(1rem, 5vw, 2.5rem);
             font-weight: 700;
         }
     }
@@ -17,7 +17,7 @@
         padding-inline: 3rem;
 
         h2 {
-            font-size: clamp(1.3vw, 1.5vw, 4vw);
+            font-size: clamp(1rem, 5vw, 2.5rem);
             font-weight: 700;
         }
 
@@ -40,17 +40,17 @@
                     margin-inline-end: 1rem;
                 }
 
-                &:first-of-type {
-                   &::after {
-                    content: "NEW";
-                    position: absolute;
-                    border: 1px solid var(--white);
-                    font-size: 0.7rem;
-                    padding-inline: 0.5rem;
-                    top: 7px;
-                    right: 50px;
-                   }   
-                }
+                // &:first-of-type {
+                //    &::after {
+                //     content: "NEW";
+                //     position: absolute;
+                //     border: 1px solid var(--white);
+                //     font-size: 0.7rem;
+                //     padding-inline: 0.5rem;
+                //     top: 7px;
+                //     right: 50px;
+                //    }   
+                // }
             }
         }
     }
