@@ -4,6 +4,7 @@ import { db } from '@/server'
 import { users, userWorkout } from '@/server/schema'
 import styles from './UserWorkouts.module.scss'
 import { eq } from 'drizzle-orm'
+import AuthAccess from '@/app/AuthAccess'
 
 export default async function Page() {
 
@@ -25,10 +26,11 @@ export default async function Page() {
     console.log('workout data', userWorkoutData);
 
     return (
-        <div className={styles.workoutsPageWrapper}>
+       <AuthAccess>
+         <div className={styles.workoutsPageWrapper}>
         <header className={styles.workoutsHeader}>
             <h1>This is your Workout Space.</h1>
-            <p>Your ultimate training companion. Workout Space provides expertly curated programs, in-depth exercise guides, and progress tracking to elevate your fitness game. Whether you're chasing strength, aesthetics, or endurance, this is where results take shape.</p>
+            <p>Your ultimate training companion. Your Workout Space provides expertly curated programs, in-depth exercise guides, and progress tracking to elevate your fitness game. Whether you're chasing strength, aesthetics, or endurance, this is where results take shape.</p>
         </header>
         <main className={styles.mainWorkoutsContent}>
             <h2>Your Workout Space:</h2>
@@ -54,5 +56,6 @@ export default async function Page() {
            }
         </main>
    </div>
+       </AuthAccess>
     )
 }
