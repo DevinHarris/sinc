@@ -33,6 +33,8 @@ export type Workout = {
     id: string,
     workoutName: string,
     workoutDisplayMedia: string,
+    workoutPreviewTextPrimary: string,
+    workoutPreviewTextSecondary: string,
     workoutGoals: string,
     workoutDescription: [{
         children: [

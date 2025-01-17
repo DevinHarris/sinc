@@ -15,19 +15,10 @@ interface ExerciseData {
 export default function WorkoutPage() {
 
     const [workout, setWorkout] = useState<Workout>();
-    const [completed, setCompleted] = useState<string[]>([]);
     const params = useParams<{ id: string }>();
 
 
-    useEffect(() => {
-       
-        if (workout && completed.length === workout.exercises.length) {
-            toast.message('Workout Complete.', {
-                description: `You just finished ${workout?.workoutName}. Remember to rate for other SINC members.`
-            })
-        }
-
-    }, [completed])
+   
 
     const handleOnAdd = async () => {
 
@@ -93,7 +84,7 @@ export default function WorkoutPage() {
                 workout && (
                     <div className={styles.exercisePageHeaderDemoMedia}>
               
-            <video autoPlay loop muted>
+            <video autoPlay={true} playsInline loop muted>
                         <source src={workout.workoutDisplayMedia} type='video/mp4'></source>
                     </video>
             </div>
@@ -102,7 +93,7 @@ export default function WorkoutPage() {
             <div className={styles.exercisePageHeaderInfo}>
                 <div className={styles.exercisePageHeaderInfoContent}>
                     <h1 className={styles.exerciseName}>{workout?.workoutName}</h1>
-                    <p className={styles.exerciseDescription}>{workout?.workoutGoals}</p>
+                    <p className={styles.exerciseDescription}>{workout?.workoutPreviewTextPrimary}</p>
                     
                     <div className={styles.exerciseActions}>
                                     <CirclePlus className={styles.actionBtns} onClick={handleOnAdd}/>
@@ -115,60 +106,13 @@ export default function WorkoutPage() {
         </header>
     <main className={styles.exerciseMainContent}>
         <div className={styles.exerciseInstructions}>
-            <h2 className={styles.exerciseInstructionsHeading}>Instructions.</h2>
-            <div className={styles.exerciseInstructionsContent}>
-                <div className={styles.exerciseSteps}>
-                {
-                workout?.exercises.length && (
-                    <ul>
-                        {
-                            workout?.workoutDescription.map((exercise, index) => (
-                                <li className={styles.exerciseName} key={index}>{exercise.children[0].text}</li>
-                            ))
-                        }
-                    </ul>
-                )
-           }
-                </div>
-                
-            </div>
+            <h2 className={styles.exerciseInstructionsHeading}>ABOUT THIS WORKOUT.</h2>
+            <p><strong>{workout?.workoutPreviewTextSecondary}</strong></p>
+            <p>Add this workout to your <strong>Workout Space</strong> for more details.</p>
+           
         </div>
-        <div className={styles.exerciseInstructions}>
-            <h2 className={styles.exerciseInstructionsHeading}>Rep and Set Range Recommendations.</h2>
-            <div className={styles.exerciseInstructionsContent}>
-                <div className={styles.exerciseSteps}>
-                    <h3>For Hypertrophy (Muscle Growth)</h3>
-                    <p>Reps: 8–12 per set / Sets: 3–5 </p>
-                </div>
-                <div className={styles.exerciseSteps}>
-                    <h3>For Strength</h3>
-                    <p>Reps: 4–6 per set / Sets: 4–6</p>
-                </div>
-                <div className={styles.exerciseSteps}>
-                    <h3>For Toning (Endurance and Definition)</h3>
-                    <p>Reps: Time-based holds (20–60 seconds per set) / Sets: 2–4</p>
-                </div>
-                
-            </div>
-        </div>
-        <div className={styles.navigation}>
-           <h3 className={styles.exercisesUsed}>Exercises used in this workout:</h3>
-           <p>Click the exercise below for more information.</p>
-           {
-                workout?.exercises.length && (
-                    <ul>
-                        {
-                            workout?.exercises.map((exercise, index) => (
-                                <li className={styles.exerciseName} key={index + 1}><Link href={`/exercises/${exercise.id}`}>
-                                    { `${index + 1}. ${exercise.exerciseName}` }    
-                                </Link> <ArrowRightCircleIcon style={{ display: 'inline-block' }} size={15}  />
-                                </li>
-                            ))
-                        }
-                    </ul>
-                )
-           }
-        </div>
+       
+        
     </main>
    
 </div>
