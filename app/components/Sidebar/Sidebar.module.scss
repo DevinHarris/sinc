@@ -2,20 +2,19 @@
     position: sticky;
     top: 0;
     left: 0;
-    max-width: 35rem;
+    grid-area: sidebar;
     // height: 100%;
+    width: 100%;
 
-    @media(max-width: 1400px) {
+    @media (min-width: 1000px) {
+        max-width: 35rem;
 
-    
-        .homeGridContent {
-            display: none;
-        }
+        
     }
 
-    @media(max-width: 1000px) {
-        max-width: 100%;
-    }
+    // @media(max-width: 1000px) {
+    //     max-width: 100%;
+    // }
     
     border-right: 2px solid var(--border-color);
     .homeGridLeft {
@@ -26,9 +25,9 @@
         padding-inline: 2rem;
         height: 100%;
 
-        @media (max-width: 1400px) {
-            justify-content: center;
-        }
+        // @media (max-width: 1400px) {
+        //     justify-content: center;
+        // }
 
         .homeNavLogo {
             font-size: 3rem;
@@ -44,6 +43,7 @@
         .homeGridLeftSection {
             margin-block: 1rem;
 
+           
             .homeGridLeftTitle {
                 font-size: 2rem;
                 font-weight: 700;
@@ -54,6 +54,15 @@
                 font-weight: 600;
                 margin-block-end: 1rem;
             }
+        }
+
+        .notifications {
+            display: none;
+
+            @media (min-width: 1000px) {
+                display: initial;
+            }
+
         }
 
         .homeGridContentDescriptions {

@@ -137,9 +137,12 @@ max-inline-size: calc((var(--measure) / 2));
 }
 
 .app-container {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   min-height: 100%;
-  grid-template-columns: 35rem 1fr;
+  // grid-template-columns: 35rem 1fr;
+  grid-template-areas: 
+    'sidebar app';
   line-height: 1.6;
 
 
@@ -153,4 +156,5 @@ max-inline-size: calc((var(--measure) / 2));
 .app-main {
   // height: 100%;
   // margin-left: 35rem;
+  flex: 1;
 }
