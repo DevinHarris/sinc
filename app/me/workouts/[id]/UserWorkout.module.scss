@@ -18,12 +18,11 @@
          @media (max-width: 1400px) {
             flex-wrap: wrap;
          }
+
        .exercisePageHeaderDemoMedia {
             min-width: 20rem;
             max-height: 100%;
-            flex: 1;
-
-           
+        
             video {
                 height: 100%;
                 object-fit: cover;
