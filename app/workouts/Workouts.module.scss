@@ -1,7 +1,7 @@
 .workoutsPageWrapper {
 
     .workoutsHeader {
-        background-color: hsl(240, 4%, 9.8%);
+        background-color: var(--greyish-background);
         border-bottom: 1px solid var(--border-color);
         
          padding-inline: 3rem;
@@ -20,39 +20,65 @@
         padding-inline: 3rem;
 
         h2 {
-            font-size: clamp(1rem, 5vw, 2.5rem);
-            font-weight: 700;
+            font-size: clamp(1rem, 1.5vw, 2.5rem);
+    font-weight: 700;
+    margin-block-end: 1rem;
         }
 
         .workoutsGrid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(min(700px, 100%), 1fr));
             margin-block-start: 0.5rem;
-            // display: flex;
-            // justify-content: center;
-            // flex-wrap: wrap;
-            // width: 100%;
+            
             
 
             .workoutsGridItem {
-                // flex-basis: 20rem;
-                // flex: 1;
-                max-width: 30rem;
-                
-                h2 {
-                    font-size: 1.2rem;
-                    margin-inline-end: 1rem;
+               
+                border-bottom: 1px solid var(--border-color);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                // height: 200px;
+                width: 100%;
+
+                .workoutGridItemMedia {
+                    // height: 100%;
+                    // width: 100%;
+                    // max-width: 15rem;
+                    // border-right: 2px solid var(--border-color);
+                    min-width: 300px;
+                    flex: 1;
+                    max-height: 100%;
+
+                    video {
+                        min-height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        aspect-ratio: 2 / 1;
+
+                    }
                 }
 
-                // &:first-of-type {
-                //    &::after {
-                //     content: "NEW";
-                //     position: absolute;
-                //     border: 1px solid var(--white);
-                //     font-size: 0.7rem;
-                //     padding-inline: 0.5rem;
-                //     top: 7px;
-                //     right: 50px;
-                //    }   
-                // }
+                .workoutGridItemMeta {
+                    // height: 100%;
+                    align-self: center;
+                    padding-block-end: 1rem;
+                    // background-color: var(--greyish-background);
+                    flex: 2;
+                    min-width: 300px;
+                    // max-width: 100%;
+                    
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    p {
+                        color: hsl(0, 3%, 44%);
+                        font-weight: 500;
+                    }
+                }
+                
             }
         }
     }

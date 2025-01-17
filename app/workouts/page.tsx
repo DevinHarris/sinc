@@ -22,9 +22,17 @@ export default async function Page() {
                             workouts?.docs.map((workout: Workout, index: number)=> {
                                 return (
                                     <div className={styles.workoutsGridItem} key={index}>
-                                        <Link href={`/workouts/${workout.id}`}>
-                                            <h2>{workout.workoutName}</h2>
-                                        </Link>
+                                        <div className={styles.workoutGridItemMedia}>
+                                            <video muted>
+                                                <source src={workout.workoutDisplayMedia}></source>
+                                            </video>
+                                        </div>
+                                        <div className={styles.workoutGridItemMeta}>
+                                            <Link href={`/workouts/${workout.id}`}>
+                                                <h2>{workout.workoutName}</h2>
+                                            </Link>
+                                            <p>{workout.workoutPreviewTextPrimary}</p>
+                                        </div>
                                     </div>
                                 )
                             })
