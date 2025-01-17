@@ -9,6 +9,7 @@ import { Toaster, toast } from 'sonner'
 import type { Workout } from '@/lib/types';
 import styles from './UserWorkout.module.scss'
 import { Button } from '@/components/ui/button';
+import AuthAccess from '@/app/AuthAccess';
 
 interface ExerciseData {
     exerciseName: string
@@ -105,7 +106,7 @@ export default function WorkoutPage() {
 
 
     return (
-        
+        <AuthAccess>
         <div className={styles.exercisePage}>
             <Toaster />
         <header className={styles.exercisePageHeader}>
@@ -200,5 +201,6 @@ export default function WorkoutPage() {
     </main>
    
 </div>
+</AuthAccess>
     )
 }
