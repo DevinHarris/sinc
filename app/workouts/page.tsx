@@ -10,7 +10,6 @@ export default async function Page() {
     console.log(workouts)
 
     return (
-        <AuthAccess>
            <div className={styles.workoutsPageWrapper}>
                 <header className={styles.workoutsHeader}>
                     <h1>Workouts by SINC</h1>
@@ -33,6 +32,5 @@ export default async function Page() {
                     </div>
                 </main>
            </div>
-        </AuthAccess>
     )
 }
