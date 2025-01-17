@@ -46,9 +46,9 @@ export default async function Sidebar({
                                  <h2 className={styles.welcomeBackMsg}>Welcome back, <strong>{session.user?.name?.split(" ")[0]}</strong>. Here's your day at a glance.</h2>
                                  <nav className='w-full' style={{ paddingInlineEnd: '1rem'}}>
                                     <ul style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'baseline' }}>
-                                        <li>
+                                        {/* <li>
                                             <Link href="/me"><strong>Dashboard</strong></Link>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <Link href="/me/workouts"><strong>Workout Space</strong></Link>
                                         </li>

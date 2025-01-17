@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import { Analytics } from '@vercel/analytics/next'
 import { Inter } from 'next/font/google'
 import { SessionProvider } from "next-auth/react";
 import "./globals.scss";
@@ -30,6 +30,7 @@ export default function RootLayout({
             <Sidebar />
             <div className="app-main">
               {children}
+              <Analytics />
             </div>
           </div>
       </body>

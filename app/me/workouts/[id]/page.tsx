@@ -114,7 +114,7 @@ export default function WorkoutPage() {
                 workout && (
                     <div className={styles.exercisePageHeaderDemoMedia}>
               
-            <video autoPlay loop muted>
+            <video autoPlay={true} playsInline loop muted>
                         <source src={workout.workoutDisplayMedia} type='video/mp4'></source>
                     </video>
             </div>
