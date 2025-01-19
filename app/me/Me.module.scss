@@ -42,5 +42,53 @@
             font-size: 2rem;
             font-weight: 600;
         }
+
+        .progressPhotos {
+            margin-block: 1rem;
+            width: 100%;
+
+            h1 {
+                font-size: clamp(1.3rem, 2vw, 1.7rem);
+                font-weight: 600;
+                margin-block-end: 1rem;
+            }
+
+            .progressPhotosDescription {
+                color: var(--grey-font-color);
+                font-weight: 600;
+                margin-block-start: 1rem;
+                max-width: 100ch;
+                width: fit-content;
+                
+
+            }
+
+            .progressPhotosContainer {
+                display: grid;
+                gap: 16px;
+                grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+                width: 100%;
+
+                .progressPhoto {
+                    
+                    width: 100%;
+                    border: 2px solid var(--greyish-background);
+                    height: 200px;
+                    border-radius: 10px;
+                    background-color: hsl(240deg 10.37% 5.99%);
+                    cursor: pointer;
+                
+                }
+            }
+        }
+
+        .stats {
+
+            h1 {
+                font-size: clamp(1.3rem, 2vw, 1.7rem);
+                font-weight: 600;
+                margin-block-end: 1rem;
+            }
+        }
     }
 }

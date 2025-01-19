@@ -98,7 +98,8 @@ export const userWorkout = pgTable("userWorkout", {
   workoutId: text("workoutId"),
   workoutName: text("workoutName"),
   workoutNotes: text("workoutNotes"),
-  completedExercises: text("completedExercises").array()
+  completedExercises: text("completedExercises").array(),
+  workoutMedia: text("workoutMedia"),
 }, 
  (table) => {
   return [{
