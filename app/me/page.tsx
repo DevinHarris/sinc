@@ -1,5 +1,5 @@
 import { auth } from "@/auth"
-import { Dumbbell, Ruler, UtensilsCrossed } from "lucide-react";
+import { Dumbbell } from "lucide-react";
 import AuthAccess from "@/app/AuthAccess"
 
 import styles from './Me.module.scss'
