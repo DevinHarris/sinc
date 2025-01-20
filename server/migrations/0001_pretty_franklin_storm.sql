@@ -1,0 +1,1 @@
+ALTER TABLE "userWorkout" ADD COLUMN "workoutMedia" text;

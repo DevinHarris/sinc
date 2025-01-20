@@ -6,9 +6,7 @@ export default function Page() {
     return (
         <div className={styles.qrPage}>
             <div className={styles.qrContentWrapper}>
-                <h1>Your Last Fitness Journey Starts Now.</h1>
-                <p>Take the first step towards achieving your fitness goals with <strong>SINC</strong>. Whether you're building strength, cutting fat, or enhancing performance, our platform delivers tailored workouts, nutrition plans, and progress tracking all in one place. Scan the QR code to join now and take control of your transformation.</p>
-                <div className={styles.qrCode}>
+            <div className={styles.qrCode}>
                     <QRCodeSVG 
                         style={{ width: '100%', height: '100%' }} 
                         value='https://sincfit.com' 
@@ -18,6 +16,9 @@ export default function Page() {
                         level='M'
                     />
                 </div>
+                <h1>Your Last Fitness Journey Starts Now.</h1>
+                <p>Take the first step towards achieving your fitness goals with <strong>SINC</strong>. Whether you're building strength, cutting fat, or enhancing performance, our platform delivers tailored workouts, nutrition plans, and progress tracking all in one place. Scan the QR code to join now and take control of your transformation.</p>
+               
             
             </div>
         </div>

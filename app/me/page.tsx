@@ -25,12 +25,12 @@ export default async function Page() {
                 <main>
                     <div className={styles.progressPhotos}>
                         <h1>Progress Photos</h1>
+                        <p className={styles.progressPhotosDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo adipisci recusandae odio consequatur eaque, veritatis officia ipsa voluptatibus voluptatem fuga natus magnam porro? Voluptas vel sapiente voluptatum quisquam nihil rem.</p>
                         <div className={styles.progressPhotosContainer}>
                             <div className={styles.progressPhoto}></div>
                             <div className={styles.progressPhoto}></div>
                             <div className={styles.progressPhoto}></div>
                         </div>
-                        <p className={styles.progressPhotosDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo adipisci recusandae odio consequatur eaque, veritatis officia ipsa voluptatibus voluptatem fuga natus magnam porro? Voluptas vel sapiente voluptatum quisquam nihil rem.</p>
                     </div>
                     <div className={styles.stats}>
                         <h1>Your Stats</h1>
