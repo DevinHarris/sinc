@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useParams } from 'next/navigation';
-import { CirclePlus, Heart, HeartCrack, CircleCheck, ArrowRightCircleIcon } from 'lucide-react'
+import { Heart, HeartCrack, CircleCheck, ArrowRightCircleIcon } from 'lucide-react'
 import { Toaster, toast } from 'sonner'
 import type { Workout } from '@/lib/types';
 import styles from './UserWorkout.module.scss'
@@ -20,8 +21,10 @@ interface Inputs {
 }
 
 export default function WorkoutPage() {
+    const { data: session } = useSession();
     const { register, handleSubmit } = useForm<Inputs>();
     const [workout, setWorkout] = useState<Workout>();
+    const [userWorkoutData, setUserWorkoutData] = useState();
     const [workoutNotes, setWorkoutNotes] = useState("");
     const [completed, setCompleted] = useState<string[]>([]);
     const params = useParams<{ id: string }>();
@@ -86,6 +89,25 @@ export default function WorkoutPage() {
 
     useEffect(() => {
 
+        const getUserWorkoutData = async () => {
+            try {
+                const res = await fetch(`/api/workout/me/${workout?.id}`, {
+
+                });
+                const data = await res.json();
+
+                console.log('user workout', data)
+
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        getUserWorkoutData();
+    }, [])
+
+    useEffect(() => {
+
         const getWorkout = async () => {
 
             try {
@@ -93,6 +115,7 @@ export default function WorkoutPage() {
                 const data = await res.json();
 
                 setWorkout(data);
+                console.log(data);
 
             } catch(err) {
                 console.log(err)
@@ -104,6 +127,7 @@ export default function WorkoutPage() {
     }, [])
 
 
+    console.log(session);
 
     return (
         <AuthAccess>
