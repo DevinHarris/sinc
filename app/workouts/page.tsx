@@ -23,9 +23,7 @@ export default async function Page() {
                                 return (
                                     <div className={styles.workoutsGridItem} key={index}>
                                         <div className={styles.workoutGridItemMedia}>
-                                            <video muted>
-                                                <source src={workout.workoutDisplayMedia}></source>
-                                            </video>
+                                            <img src="/images/bg-img.jpg" alt="workout image" />
                                         </div>
                                         <div className={styles.workoutGridItemMeta}>
                                             <Link href={`/workouts/${workout.id}`}>

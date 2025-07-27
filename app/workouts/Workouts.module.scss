@@ -28,7 +28,7 @@
         .workoutsGrid {
             display: grid;
             gap: 20px;
-            grid-template-columns: repeat(auto-fill, minmax(min(700px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             margin-block-start: 0.5rem;
             
             
