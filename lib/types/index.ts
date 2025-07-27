@@ -50,3 +50,24 @@ export type Workout = {
     programName: [],
     
 }
+
+export type User = {
+    expires: string,
+    user: {
+        id: string,
+        email: string,
+        image: string,
+        name: string
+    }
+    
+}
+
+export type UserWorkout = {
+    completedExercises: [],
+    userId: string,
+    userWorkoutId: string,
+    workoutId: string,
+    workoutMedia?: string,
+    workoutName: string,
+    workoutNotes?: []
+}

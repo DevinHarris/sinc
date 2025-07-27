@@ -53,7 +53,7 @@ export default async function Sidebar({
                                             <Link href="/me/workouts"><strong>Workout Space</strong></Link>
                                         </li>
                                         <li>
-                                            <Link href="/nutrisinc"><strong>NutriSINC</strong></Link>
+                                            <Link href="/natrl"><strong>NATRL.</strong></Link>
                                         </li>
                                         <li>
                                             <Link href="/workouts"><strong>Workouts</strong></Link>

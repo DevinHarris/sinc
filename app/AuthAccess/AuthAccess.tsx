@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useSession } from "next-auth/react"
 import { User2Icon } from 'lucide-react'
+import { useAppSelector, useAppDispatch } from "@/app/lib/hooks"
 import { Button } from "@/components/ui/button"
 import { AuthAccessProps } from "@/types"
 
@@ -11,6 +12,7 @@ export default function AuthAccess({
     children
 }: AuthAccessProps) {
     const { data: session } = useSession();
+    const dispatch = useAppDispatch();
 
     return (
             <div style={{ height: "100%" }}>

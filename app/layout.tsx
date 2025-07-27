@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/next'
 import { Inter } from 'next/font/google'
 import { SessionProvider } from "next-auth/react";
+import StoreProvider from "./StoreProvider";
 import "./globals.scss";
 import Sidebar from "./components/Sidebar/Sidebar";
 
@@ -24,17 +25,19 @@ export default function RootLayout({
 }>) {
   return (
    <SessionProvider>
-     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-          <div className="app-container">
-            <Sidebar />
-            <div className="app-main">
-              {children}
-              <Analytics />
+      <StoreProvider>
+        <html lang="en">
+        <body className={`${inter.variable} antialiased`}>
+            <div className="app-container">
+              <Sidebar />
+              <div className="app-main">
+                {children}
+                <Analytics />
+              </div>
             </div>
-          </div>
-      </body>
-    </html>
+        </body>
+      </html>
+      </StoreProvider>
    </SessionProvider>
   );
 }
